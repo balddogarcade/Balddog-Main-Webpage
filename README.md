@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bald.dog ARCADE — Official Landing Webpage
 
-## Getting Started
+> **“El patio de recreo de los perros calvos.”**  
+> Official web portal and Android APK download center for **bald.dog ARCADE** (`dog.bald.arcade`), deployed to [bald.dog](https://bald.dog) via GitHub Pages.
 
-First, run the development server:
+---
+
+## Overview
+
+This repository contains the static web frontend for **bald.dog ARCADE**, built following the official Brand Manual (*High-Contrast Monochrome Editorial Arcade* with neon accents).
+
+### Key Features
+- **High-Impact Hero:** Mascot artwork showcase, official slogan, and direct Android APK download CTA.
+- **Mobile QR Code Scanner:** Instant SVG QR code for desktop-to-mobile APK sideloading.
+- **Arcade Capabilities Grid:** Details on Rust/FBNeo native emulation (NeoGeo, CPS1/2), 1CC RAM-probed leaderboards, P2P netplay, and IPFS distribution.
+- **Brand Philosophy:** High-contrast OLED editorial design principles (poster-first 3:4 uncropped flyers).
+- **Static Legal Stubs:** Fully compliant `/privacy/` and `/terms/` pages.
+- **GitHub Pages Ready:** Pure static export (`output: 'export'`) with `CNAME` (`bald.dog`), `.nojekyll`, `robots.txt`, and `sitemap.xml`.
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Static Export `output: 'export'`)
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS v4 with Brand Manual tokens (`ObsidianBlack`, `CarbonSurface`, `GraphiteSurface`, `CharcoalBorder`, `SteelBorder`)
+- **Typography:** `Space Grotesk` (Headings/Display), `Inter` (Body/UI), `JetBrains Mono` (Technical/Specs) via `next/font`
+- **UI Primitives:** Custom shadcn/ui components (`Button`, `Badge`, `Card`)
+- **Icons:** SVG vector icons and `lucide-react`
+- **QR Code Engine:** `qrcode.react` (pure vector SVG)
+- **CI/CD:** GitHub Actions (`.github/workflows/deploy.yml`) using `actions/deploy-pages@v4`
+
+---
+
+## Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run local development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build static output (exports to ./out)
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Deployment to GitHub Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Every push to the `main` branch automatically triggers the `.github/workflows/deploy.yml` workflow, which builds the static bundle and deploys it directly to GitHub Pages bound to `bald.dog`.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GPL-3.0 License. Open source arcade preservation.
