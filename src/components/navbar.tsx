@@ -3,7 +3,8 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Github, Menu, X, Sparkles } from "lucide-react";
+import { Download, Menu, X, Sparkles } from "lucide-react";
+import { GithubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -66,7 +67,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
             <span>GitHub</span>
           </a>
         </nav>
@@ -133,7 +134,7 @@ export function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
             <span>GitHub Repository</span>
           </a>
         </div>

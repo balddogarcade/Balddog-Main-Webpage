@@ -1,6 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
-import { Download, Github, ShieldCheck, Zap, Trophy, Smartphone } from "lucide-react";
+import { Download, ShieldCheck, Zap, Trophy, Smartphone } from "lucide-react";
+import { GithubIcon, AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -38,7 +39,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
               <a href="#download">
                 <Button variant="default" size="lg" className="gap-3 w-full sm:w-auto h-13 px-8 text-base">
-                  <Smartphone className="h-5 w-5" />
+                  <AndroidIcon className="h-5 w-5" />
                   <span>Descargar APK Android</span>
                 </Button>
               </a>
@@ -48,7 +49,7 @@ export function Hero() {
                 rel="noopener noreferrer"
               >
                 <Button variant="secondary" size="lg" className="gap-2.5 w-full sm:w-auto h-13 px-6 text-base">
-                  <Github className="h-5 w-5" />
+                  <GithubIcon className="h-5 w-5" />
                   <span>Ver en GitHub</span>
                 </Button>
               </a>

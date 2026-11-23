@@ -1,7 +1,8 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Globe, Shield, Terminal, ArrowUpRight } from "lucide-react";
+import { Globe, Shield, Terminal, ArrowUpRight } from "lucide-react";
+import { GithubIcon } from "@/components/icons";
 
 export function Footer() {
   return (
@@ -106,7 +107,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-pure-white transition-colors inline-flex items-center gap-1.5"
                 >
-                  <Github className="h-3.5 w-3.5" />
+                  <GithubIcon className="h-3.5 w-3.5" />
                   <span>GitHub Repository</span>
                   <ArrowUpRight className="h-3 w-3 text-muted-gray" />
                 </a>
