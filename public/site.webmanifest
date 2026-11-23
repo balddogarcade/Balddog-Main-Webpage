@@ -1,0 +1,17 @@
+{
+  "name": "bald.dog ARCADE",
+  "short_name": "bald.dog",
+  "description": "El patio de recreo de los perros calvos. Preservación arcade en Android.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050506",
+  "theme_color": "#050506",
+  "icons": [
+    {
+      "src": "/images/mascot-portrait.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
