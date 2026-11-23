@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
+@theme {
+  --color-obsidian: #050506;
+  --color-carbon: #101012;
+  --color-graphite: #1A1A1E;
+  --color-charcoal: #2A2A30;
+  --color-steel: #44444E;
+  --color-muted-gray: #8E8E98;
+  --color-silver-gray: #C8C8D0;
+  --color-pure-white: #FAFAFA;
+  --color-pure-black: #000000;
+  --color-arcade-magenta: #FF2A85;
+  --color-arcade-amber: #FF8A00;
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050506;
+  --foreground: #FAFAFA;
+  --card: #101012;
+  --card-foreground: #FAFAFA;
+  --popover: #101012;
+  --popover-foreground: #FAFAFA;
+  --primary: #FAFAFA;
+  --primary-foreground: #000000;
+  --secondary: #1A1A1E;
+  --secondary-foreground: #FAFAFA;
+  --muted: #1A1A1E;
+  --muted-foreground: #8E8E98;
+  --accent: #1A1A1E;
+  --accent-foreground: #FAFAFA;
+  --destructive: #ef4444;
+  --destructive-foreground: #FAFAFA;
+  --border: #2A2A30;
+  --input: #2A2A30;
+  --ring: #44444E;
+  --radius: 0.875rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--border);
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050506;
+  color: #FAFAFA;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  selection-background-color: #FF2A85;
+  selection-color: #FAFAFA;
+}
+
+::selection {
+  background-color: rgba(255, 42, 133, 0.35);
+  color: #FAFAFA;
+}
+
+/* Custom hairline borders and arcade glowing touches */
+.arcade-glow {
+  box-shadow: 0 0 40px -10px rgba(255, 42, 133, 0.25);
+}
+
+.arcade-border-glow {
+  box-shadow: 0 0 15px rgba(255, 42, 133, 0.4), inset 0 0 15px rgba(255, 42, 133, 0.2);
+}
+
+.hairline-border {
+  border: 1px solid #2A2A30;
 }
