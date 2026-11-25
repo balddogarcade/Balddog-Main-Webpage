@@ -8,7 +8,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export function DownloadSection() {
-  const downloadUrl = "https://github.com/balddogarcade/Balddog-Android-App/releases/latest";
+  const directApkUrl =
+    "https://github.com/balddogarcade/Balddog-Android-App/releases/latest/download/app-release.apk";
+  const releasePageUrl =
+    "https://github.com/balddogarcade/Balddog-Android-App/releases/latest";
+  const sha256Url =
+    "https://github.com/balddogarcade/Balddog-Android-App/releases/latest/download/app-release.apk.sha256";
 
   return (
     <section id="download" className="py-20 lg:py-28 border-b border-charcoal/60 bg-gradient-to-b from-carbon/40 via-obsidian to-obsidian">
@@ -41,7 +46,7 @@ export function DownloadSection() {
                 <div className="flex flex-col items-center shrink-0">
                   <div className="p-3.5 rounded-2xl bg-pure-white border-2 border-pure-white shadow-2xl">
                     <QRCodeSVG
-                      value={downloadUrl}
+                      value={directApkUrl}
                       size={144}
                       level="H"
                       includeMargin={false}
@@ -59,7 +64,7 @@ export function DownloadSection() {
                 <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-4">
                   <div>
                     <h3 className="font-display text-2xl font-bold text-pure-white">
-                      balddog-arcade-release.apk
+                      app-release.apk
                     </h3>
                     <p className="text-sm text-silver-gray mt-1">
                       Versión estable optimizada para procesadores ARM de 64 bits.
@@ -68,14 +73,25 @@ export function DownloadSection() {
 
                   <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                     <a
-                      href={downloadUrl}
+                      href={directApkUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto"
                     >
                       <Button variant="default" size="lg" className="gap-2.5 w-full sm:w-auto h-12">
                         <Download className="h-5 w-5" />
-                        <span>Descargar APK (v1.0)</span>
+                        <span>Descargar APK</span>
+                      </Button>
+                    </a>
+                    <a
+                      href={releasePageUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto"
+                    >
+                      <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto h-12 border-charcoal hover:border-silver-gray">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Ver Release en GitHub</span>
                       </Button>
                     </a>
                   </div>
@@ -108,6 +124,47 @@ export function DownloadSection() {
                   </li>
                 </ol>
               </div>
+
+              {/* VirusTotal & Integrity Transparency Banner */}
+              <div className="mt-6 p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/15 space-y-2.5">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
+                    <span className="font-display text-xs font-bold uppercase tracking-wider text-pure-white">
+                      Transparencia y Análisis VirusTotal
+                    </span>
+                  </div>
+                  <Badge variant="mono" className="border-emerald-500/40 text-emerald-400">
+                    SLSA + SHA-256
+                  </Badge>
+                </div>
+                <p className="text-xs text-silver-gray leading-relaxed">
+                  Cada release oficial se compila de forma reproducible en GitHub Actions, incluye atestación criptográfica{" "}
+                  <span className="text-pure-white font-medium">SLSA Build Provenance</span> y se analiza automáticamente con{" "}
+                  <span className="text-pure-white font-medium">VirusTotal API v3</span>. Puedes revisar el reporte público de VirusTotal y el checksum{" "}
+                  <code className="font-mono text-emerald-400">SHA-256</code> directamente en la página del release antes de instalar.
+                </p>
+                <div className="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono">
+                  <a
+                    href={releasePageUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-emerald-400 hover:underline"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    <span>Ver reporte VirusTotal y notas del Release</span>
+                  </a>
+                  <a
+                    href={sha256Url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-silver-gray hover:text-pure-white hover:underline"
+                  >
+                    <FileCode className="h-3.5 w-3.5" />
+                    <span>app-release.apk.sha256</span>
+                  </a>
+                </div>
+              </div>
             </Card>
 
           </div>
@@ -136,7 +193,7 @@ export function DownloadSection() {
                 </div>
                 <div className="py-3 flex justify-between items-center">
                   <span className="text-muted-gray">Tamaño del APK</span>
-                  <span className="text-arcade-magenta font-bold">~24 MB</span>
+                  <span className="text-arcade-magenta font-bold">~25.4 MB</span>
                 </div>
                 <div className="py-3 flex justify-between items-center">
                   <span className="text-muted-gray">Android Mínimo</span>
@@ -151,8 +208,8 @@ export function DownloadSection() {
                   <span className="text-silver-gray">libfbneo_libretro.so</span>
                 </div>
                 <div className="py-3 flex justify-between items-center">
-                  <span className="text-muted-gray">Distribución IPFS</span>
-                  <span className="text-pure-white">Pinata Gateway</span>
+                  <span className="text-muted-gray">Distribución</span>
+                  <span className="text-pure-white">GitHub Releases + In-App Updater</span>
                 </div>
                 <div className="py-3 flex justify-between items-center">
                   <span className="text-muted-gray">Licencia</span>
