@@ -48,9 +48,12 @@ export const metadata: Metadata = {
   publisher: "bald.dog ARCADE",
   manifest: "/site.webmanifest",
   icons: {
-    icon: "/images/mascot-portrait.jpg",
-    shortcut: "/images/mascot-portrait.jpg",
-    apple: "/images/mascot-portrait.jpg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/app-icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/images/app-icon.png",
   },
   openGraph: {
     type: "website",
