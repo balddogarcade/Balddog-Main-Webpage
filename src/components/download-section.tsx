@@ -61,7 +61,7 @@ export function DownloadSection() {
                 </div>
 
                 {/* Download CTA & Info */}
-                <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-4">
+                <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-4 min-w-0 flex-1">
                   <div>
                     <h3 className="font-display text-2xl font-bold text-pure-white">
                       app-release.apk
@@ -71,7 +71,7 @@ export function DownloadSection() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 w-full">
                     <a
                       href={directApkUrl}
                       target="_blank"
