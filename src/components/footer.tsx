@@ -2,7 +2,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Globe, Shield, Terminal, ArrowUpRight } from "lucide-react";
-import { GithubIcon } from "@/components/icons";
+import { GithubIcon, DiscordIcon, XIcon } from "@/components/icons";
 
 export function Footer() {
   return (
@@ -102,13 +102,37 @@ export function Footer() {
             <ul className="space-y-2 text-xs">
               <li>
                 <a
-                  href="https://github.com/balddogarcade/Balddog-Android-App"
+                  href="https://github.com/balddogarcade/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-pure-white transition-colors inline-flex items-center gap-1.5"
                 >
                   <GithubIcon className="h-3.5 w-3.5" />
-                  <span>GitHub Repository</span>
+                  <span>GitHub</span>
+                  <ArrowUpRight className="h-3 w-3 text-muted-gray" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://discord.gg/wrN9KRvubj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pure-white transition-colors inline-flex items-center gap-1.5"
+                >
+                  <DiscordIcon className="h-3.5 w-3.5" />
+                  <span>Discord</span>
+                  <ArrowUpRight className="h-3 w-3 text-muted-gray" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/BaldDogArcade"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pure-white transition-colors inline-flex items-center gap-1.5"
+                >
+                  <XIcon className="h-3.5 w-3.5" />
+                  <span>X / Twitter</span>
                   <ArrowUpRight className="h-3 w-3 text-muted-gray" />
                 </a>
               </li>
