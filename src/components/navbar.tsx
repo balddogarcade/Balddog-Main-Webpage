@@ -4,7 +4,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Download, Menu, X } from "lucide-react";
-import { GithubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
@@ -49,26 +48,11 @@ export function Navbar() {
             Características
           </Link>
           <Link
-            href="#download"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            Descarga APK
-          </Link>
-          <Link
             href="#philosophy"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
             Filosofía
           </Link>
-          <a
-            href="https://github.com/balddogarcade/Balddog-Android-App"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            <GithubIcon className="h-4 w-4" />
-            <span>GitHub</span>
-          </a>
         </nav>
 
         {/* Action Button */}
@@ -109,29 +93,12 @@ export function Navbar() {
             Características
           </Link>
           <Link
-            href="#download"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-lg px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
-          >
-            Descarga APK
-          </Link>
-          <Link
             href="#philosophy"
             onClick={() => setMobileMenuOpen(false)}
             className="block rounded-lg px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
           >
             Filosofía
           </Link>
-          <a
-            href="https://github.com/balddogarcade/Balddog-Android-App"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
-          >
-            <GithubIcon className="h-4 w-4" />
-            <span>GitHub Repository</span>
-          </a>
         </div>
       )}
     </header>
