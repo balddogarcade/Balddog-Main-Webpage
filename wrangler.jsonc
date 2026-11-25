@@ -3,6 +3,10 @@
   "main": ".open-next/worker.js",
   "name": "balddog-main-webpage",
   "compatibility_date": "2026-11-23",
+  "routes": [
+    { "pattern": "bald.dog", "custom_domain": true },
+    { "pattern": "www.bald.dog", "custom_domain": true }
+  ],
   "compatibility_flags": [
     "global_fetch_strictly_public"
   ],
