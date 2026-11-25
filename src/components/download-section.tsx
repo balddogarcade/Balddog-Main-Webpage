@@ -71,15 +71,15 @@ export function DownloadSection() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-3 w-full">
+                  <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">
                     <a
                       href={directApkUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto"
                     >
-                      <Button variant="default" size="lg" className="gap-2.5 w-full sm:w-auto h-12">
-                        <Download className="h-5 w-5" />
+                      <Button variant="default" size="lg" className="gap-2 w-full sm:w-auto h-11 px-4 text-xs sm:text-sm whitespace-nowrap">
+                        <Download className="h-4 w-4 shrink-0" />
                         <span>Descargar APK</span>
                       </Button>
                     </a>
@@ -89,8 +89,8 @@ export function DownloadSection() {
                       rel="noopener noreferrer"
                       className="w-full sm:w-auto"
                     >
-                      <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto h-12 border-charcoal hover:border-silver-gray">
-                        <ExternalLink className="h-4 w-4" />
+                      <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto h-11 px-4 text-xs sm:text-sm whitespace-nowrap border-charcoal hover:border-silver-gray">
+                        <ExternalLink className="h-4 w-4 shrink-0" />
                         <span>Ver Release en GitHub</span>
                       </Button>
                     </a>
