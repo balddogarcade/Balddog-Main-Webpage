@@ -3,10 +3,9 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Menu, X, Sparkles } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -72,12 +71,8 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Action Button & Slogan Pill */}
+        {/* Action Button */}
         <div className="hidden sm:flex items-center gap-3">
-          <Badge variant="mono" className="hidden lg:flex items-center gap-1.5 text-muted-gray border-charcoal">
-            <Sparkles className="h-3 w-3 text-arcade-amber" />
-            <span>arm64-v8a ready</span>
-          </Badge>
           <a href="#download">
             <Button variant="default" size="sm" className="gap-2">
               <Download className="h-4 w-4" />
