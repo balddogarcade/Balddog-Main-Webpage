@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowLeft, Cpu, Gamepad2, Play, Users, X } from "lucide-react";
 import type { PublicGame } from "@/types/game";
+import { IpfsImage } from "@/components/games/ipfs-image";
 
 export function GameDetailView({ game }: { game: PublicGame }) {
   const gallery = React.useMemo(
@@ -50,25 +51,23 @@ export function GameDetailView({ game }: { game: PublicGame }) {
       <section className="bg-carbon border border-charcoal p-6 rounded-none space-y-6">
         {game.url_image_marquee && (
           <div className="w-full overflow-hidden border border-charcoal bg-obsidian">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <IpfsImage
               src={game.url_image_marquee}
               alt={`${game.title} marquee`}
+              containerClassName="relative w-full min-h-24 max-h-32 overflow-hidden bg-obsidian flex items-center justify-center"
               className="w-full max-h-32 object-contain mx-auto"
+              fallbackText="MARQUEE NO DISPONIBLE"
             />
           </div>
         )}
 
         <div className="flex flex-col sm:flex-row gap-6 items-start">
           <div className="w-40 shrink-0 aspect-[3/4] bg-obsidian border border-charcoal overflow-hidden">
-            {game.cover_url || game.url_image_title ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={game.cover_url || game.url_image_title || ""}
-                alt={game.title}
-                className="w-full h-full object-cover"
-              />
-            ) : null}
+            <IpfsImage
+              src={game.cover_url || game.url_image_title}
+              alt={game.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="flex-1 space-y-3">
@@ -128,12 +127,12 @@ export function GameDetailView({ game }: { game: PublicGame }) {
                 className="group bg-carbon border border-charcoal hover:border-steel overflow-hidden text-left rounded-none"
               >
                 <div className="aspect-video bg-obsidian overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <IpfsImage
                     src={item.url}
                     alt={`${game.title} ${item.label}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fallbackText="NO DISPONIBLE"
                   />
                 </div>
                 <div className="px-3 py-1.5 text-[11px] font-mono text-silver-gray border-t border-charcoal">
@@ -217,11 +216,12 @@ export function GameDetailView({ game }: { game: PublicGame }) {
                 <X className="h-4 w-4" />
               </button>
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <IpfsImage
               src={lightbox.url}
               alt={lightbox.label}
+              containerClassName="relative w-full min-h-[40vh] max-h-[75vh] overflow-hidden bg-obsidian flex items-center justify-center"
               className="w-full max-h-[75vh] object-contain bg-obsidian"
+              fallbackText="IMAGEN NO DISPONIBLE"
             />
           </div>
         </div>

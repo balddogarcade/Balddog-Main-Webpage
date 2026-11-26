@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Users } from "lucide-react";
 import type { PublicGame } from "@/types/game";
+import { IpfsImage } from "@/components/games/ipfs-image";
 
 export function GameCard({ game }: { game: PublicGame }) {
   const imageSrc = game.cover_url || game.url_image_title || game.url_image_ingame;
@@ -11,19 +12,12 @@ export function GameCard({ game }: { game: PublicGame }) {
       className="group bg-carbon border border-charcoal hover:border-steel transition-colors rounded-none flex flex-col overflow-hidden"
     >
       <div className="relative aspect-[3/4] w-full bg-obsidian overflow-hidden border-b border-charcoal">
-        {imageSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={imageSrc}
-            alt={game.title}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-        ) : (
-          <div className="h-full w-full flex items-center justify-center text-xs font-mono text-muted-gray">
-            SIN PORTADA
-          </div>
-        )}
+        <IpfsImage
+          src={imageSrc}
+          alt={game.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
         {game.year && (
           <span className="absolute top-2 right-2 bg-obsidian/90 border border-charcoal px-2 py-0.5 text-[10px] font-mono text-silver-gray">
             {game.year}
