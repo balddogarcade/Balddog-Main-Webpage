@@ -33,6 +33,9 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
               Últimas 6 Repeticiones
             </h2>
           </div>
+          <p className="text-xs sm:text-sm text-muted-gray font-mono">
+            Partidas de 1 ficha • Reproducibles frame a frame
+          </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
