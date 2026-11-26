@@ -54,6 +54,7 @@ Cada `push` a `main` (o ejecución manual vía `workflow_dispatch`) ejecuta:
 |---|---|
 | `CLOUDFLARE_API_TOKEN` | Token de API de Cloudflare con permisos de *Workers Scripts: Edit* y *Zone/DNS* |
 | `CLOUDFLARE_ACCOUNT_ID` | ID de la cuenta de Cloudflare donde vive el Worker |
+| `SUPABASE_URL` / `SUPABASE_ANON_KEY` | Secrets del Worker (`wrangler secret put`) para consultar `get_public_arcade_stats()` server-side |
 
 > **Seguridad:** Nunca commitear `.dev.vars`, tokens ni credenciales en el repositorio.
 

@@ -42,6 +42,18 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
+            href="#stats"
+            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
+          >
+            Estadísticas
+          </Link>
+          <Link
+            href="#top-downloads"
+            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
+          >
+            Rankings
+          </Link>
+          <Link
             href="#features"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >

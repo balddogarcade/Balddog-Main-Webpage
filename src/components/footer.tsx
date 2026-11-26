@@ -55,6 +55,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/#stats" className="hover:text-pure-white transition-colors">
+                  Estadísticas
+                </Link>
+              </li>
+              <li>
+                <Link href="/#top-downloads" className="hover:text-pure-white transition-colors">
+                  Rankings
+                </Link>
+              </li>
+              <li>
                 <Link href="/#features" className="hover:text-pure-white transition-colors">
                   Características
                 </Link>

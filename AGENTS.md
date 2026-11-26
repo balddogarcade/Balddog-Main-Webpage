@@ -38,4 +38,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 3. **Distribución oficial del APK y VirusTotal (`src/components/download-section.tsx`):**
    - El botón principal y el código QR deben apuntar a `https://github.com/balddogarcade/Balddog-Android-App/releases/latest/download/app-release.apk`.
    - Mantén el botón secundario a `releases/latest`, el enlace a `app-release.apk.sha256` y el banner de **Transparencia y Análisis VirusTotal** (`SLSA + SHA-256`).
-4. **Referencia técnica:** Consulta [docs/CLOUDFLARE_AND_RELEASES.md](docs/CLOUDFLARE_AND_RELEASES.md) para arquitectura, comandos y troubleshooting.
+4. **Telemetría Pública y Cuentas Registradas:**
+   - Las estadísticas y rankings (`src/lib/arcade-stats.ts`) se consultan server-side vía `SUPABASE_URL` y `SUPABASE_ANON_KEY` (`.dev.vars` en local, `wrangler secret put` en producción) contra el RPC `get_public_arcade_stats()`.
+   - No existen cuentas anónimas ni de visitantes en la plataforma; evitar textos como "Sin cuentas forzadas" o similares.
+   - Para validar lint en código fuente sin escanear `.open-next/**`, ejecutar `npx eslint src`.
+5. **Referencia técnica:** Consulta [docs/CLOUDFLARE_AND_RELEASES.md](docs/CLOUDFLARE_AND_RELEASES.md) para arquitectura, comandos y troubleshooting.

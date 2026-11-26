@@ -10,7 +10,8 @@
 This repository contains the Next.js web application for **bald.dog ARCADE**, built following the official Brand Manual (*High-Contrast Monochrome Editorial Arcade* with neon accents).
 
 ### Key Features
-- **High-Impact Hero:** Mascot artwork showcase, official slogan, and direct Android APK download CTA.
+- **High-Impact Hero & Live Telemetry:** Mascot artwork showcase, official slogan, live community counters (players, playtime, matches, 1CC records), and direct Android APK download CTA.
+- **Arcade Pulse & Top 6 Rankings:** Real-time aggregated stats (`#stats`), Top 6 Most Downloaded (`#top-downloads`), and Top 6 Most Played by Time (`#most-played`) with official 3:4 `.webp` flyers.
 - **Direct APK Distribution & QR Code:** Direct download link to `app-release.apk` from GitHub Releases (`releases/latest/download/app-release.apk`), release notes link, and instant SVG QR code.
 - **Security & VirusTotal Transparency:** Dedicated section highlighting **VirusTotal API v3** scanning, **SLSA Build Provenance** attestation, and `app-release.apk.sha256` verification.
 - **Arcade Capabilities Grid:** Details on Rust/FBNeo native emulation (NeoGeo, CPS1/2), 1CC RAM-probed leaderboards, P2P netplay, and IPFS ROM distribution.

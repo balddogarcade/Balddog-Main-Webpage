@@ -4,8 +4,17 @@ import { Download, ShieldCheck, Zap, Trophy, Smartphone } from "lucide-react";
 import { GithubIcon, AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  type ArcadeSummaryStats,
+  formatCompactNumber,
+  formatPlayDuration,
+} from "@/lib/arcade-stats";
 
-export function Hero() {
+interface HeroProps {
+  stats?: ArcadeSummaryStats | null;
+}
+
+export function Hero({ stats }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 border-b border-charcoal/60 bg-gradient-to-b from-obsidian via-obsidian to-carbon/40">
       {/* Subtle background glow effect */}
@@ -55,6 +64,44 @@ export function Hero() {
               </a>
             </div>
 
+            {/* Live Arcade Telemetry Strip */}
+            {stats && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full pt-2">
+                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
+                    Jugadores
+                  </span>
+                  <span className="font-display text-lg font-bold text-pure-white">
+                    {formatCompactNumber(stats.total_users)}
+                  </span>
+                </div>
+                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
+                    Tiempo Jugado
+                  </span>
+                  <span className="font-display text-lg font-bold text-arcade-amber">
+                    {formatPlayDuration(stats.total_play_seconds)}
+                  </span>
+                </div>
+                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
+                    Partidas
+                  </span>
+                  <span className="font-display text-lg font-bold text-pure-white">
+                    {formatCompactNumber(stats.total_sessions)}
+                  </span>
+                </div>
+                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
+                    Récords 1CC
+                  </span>
+                  <span className="font-display text-lg font-bold text-arcade-magenta">
+                    {formatCompactNumber(stats.total_1cc_records)}
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* Quick Tech Specs / Trust Badges */}
             <div className="pt-4 border-t border-charcoal/80 w-full flex flex-wrap items-center gap-3 text-xs text-muted-gray font-mono">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-graphite/70 border border-charcoal">
@@ -97,7 +144,7 @@ export function Hero() {
                       Te queremos en el arcade
                     </span>
                     <span className="text-[11px] text-muted-gray">
-                      Sin cuentas forzadas • 100% Offline Ready
+                      Cuentas Registradas • 100% Offline Ready
                     </span>
                   </div>
                   <Badge variant="arcade" className="text-[10px] uppercase tracking-wider">
