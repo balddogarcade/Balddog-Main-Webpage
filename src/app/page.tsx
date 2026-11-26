@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { ArcadePulse } from "@/components/arcade-pulse";
 import { GameRankings } from "@/components/game-rankings";
+import { LatestReplays } from "@/components/latest-replays";
 import { Features } from "@/components/features";
 import { DownloadSection } from "@/components/download-section";
 import { Philosophy } from "@/components/philosophy";
@@ -23,6 +24,7 @@ export default async function Home() {
           topDownloaded={stats?.top_downloaded ?? []}
           topPlayed={stats?.top_played ?? []}
         />
+        <LatestReplays replays={stats?.latest_replays ?? []} />
         <Features />
         <DownloadSection />
         <Philosophy />

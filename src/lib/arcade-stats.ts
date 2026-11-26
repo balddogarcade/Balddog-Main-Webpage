@@ -19,10 +19,40 @@ export interface ArcadeSummaryStats {
   active_countries: number;
 }
 
+export interface ReplayAssetRef {
+  rom_filename: string;
+  ipfs_cid: string;
+  size_bytes: number;
+}
+
+export interface LatestReplayItem {
+  id: string;
+  score: number;
+  replay_path: string;
+  replay_url?: string;
+  replay_size_bytes: number | null;
+  verification_status: string;
+  achieved_at: string;
+  username: string;
+  country_code: string | null;
+  avatar_seed: string | null;
+  game_slug: string;
+  game_title: string;
+  system: string;
+  rom_filename: string;
+  ipfs_cid: string;
+  size_bytes: number;
+  sha256: string;
+  crc32: string;
+  bios: ReplayAssetRef | null;
+  parent: ReplayAssetRef | null;
+}
+
 export interface PublicArcadeStats {
   summary: ArcadeSummaryStats;
   top_downloaded: ArcadeGameStat[];
   top_played: ArcadeGameStat[];
+  latest_replays?: LatestReplayItem[];
 }
 
 export async function getPublicArcadeStats(): Promise<PublicArcadeStats | null> {
@@ -61,6 +91,16 @@ export async function getPublicArcadeStats(): Promise<PublicArcadeStats | null> 
     const data = (await response.json()) as PublicArcadeStats;
     if (!data || !data.summary) {
       return null;
+    }
+
+    const baseUrl = supabaseUrl.replace(/\/+$/, "");
+    if (Array.isArray(data.latest_replays)) {
+      data.latest_replays = data.latest_replays.map((item) => ({
+        ...item,
+        replay_url: `${baseUrl}/storage/v1/object/public/replays/${item.replay_path}`,
+      }));
+    } else {
+      data.latest_replays = [];
     }
 
     return data;
