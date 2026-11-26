@@ -20,9 +20,9 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
   return (
     <section
       id="replays"
-      className="relative py-20 border-t border-charcoal/70 bg-obsidian"
+      className="relative py-16 lg:py-24 border-b border-charcoal/60 bg-obsidian"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 rounded-none border border-arcade-magenta/30 bg-arcade-magenta/10 px-3 py-1 text-xs font-mono text-arcade-magenta">
@@ -39,7 +39,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {replays.map((item) => {
             const isVerified = item.verification_status === "verified";
             const sizeKb = item.replay_size_bytes
@@ -49,9 +49,9 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
             return (
               <div
                 key={item.id}
-                className="group flex flex-col rounded-none border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel transition-all duration-300"
+                className="group flex flex-col rounded-none border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="relative h-40 w-full bg-obsidian overflow-hidden">
+                <div className="relative aspect-[3/4] w-full bg-obsidian overflow-hidden">
                   <Image
                     src={`/images/covers/${item.game_slug}.webp`}
                     alt={item.game_title}
