@@ -86,12 +86,12 @@ async function loadFbneoScript(): Promise<void> {
 
 type LoadStage = "bsv" | "ipfs" | "wasm" | "ready" | "error";
 
-export function ReplayPlayerModal({
+export function ReplayPlayer({
   replay,
   onClose,
 }: {
   replay: LatestReplayItem;
-  onClose: () => void;
+  onClose?: () => void;
 }) {
   const [stage, setStage] = React.useState<LoadStage>("bsv");
   const [errorStage, setErrorStage] = React.useState<"bsv" | "ipfs" | "wasm">(
@@ -441,11 +441,10 @@ export function ReplayPlayerModal({
     totalFrames > 0 ? Math.min(100, (currentFrame / totalFrames) * 100) : 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-pure-black/85 backdrop-blur-md p-4">
-      <div
-        ref={containerRef}
-        className="relative w-full max-w-4xl rounded-none border border-charcoal bg-obsidian shadow-2xl overflow-hidden flex flex-col"
-      >
+    <div
+      ref={containerRef}
+      className="relative w-full rounded-none border border-charcoal bg-obsidian shadow-2xl overflow-hidden flex flex-col"
+    >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-charcoal bg-carbon/80">
           <div className="flex items-center gap-3 min-w-0">
@@ -465,14 +464,16 @@ export function ReplayPlayerModal({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-none p-1.5 text-muted-gray hover:text-pure-white hover:bg-charcoal transition-colors"
-            aria-label="Cerrar reproductor"
-          >
-            <X className="h-5 w-5" />
-          </button>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-none p-1.5 text-muted-gray hover:text-pure-white hover:bg-charcoal transition-colors"
+              aria-label="Cerrar reproductor"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          )}
         </div>
 
         {/* Viewport: Loading UX o Canvas */}
@@ -675,6 +676,21 @@ export function ReplayPlayerModal({
             </div>
           </div>
         )}
+    </div>
+  );
+}
+
+export function ReplayPlayerModal({
+  replay,
+  onClose,
+}: {
+  replay: LatestReplayItem;
+  onClose: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-pure-black/85 backdrop-blur-md p-4">
+      <div className="w-full max-w-4xl">
+        <ReplayPlayer replay={replay} onClose={onClose} />
       </div>
     </div>
   );
