@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { Download, ShieldCheck, Zap, Trophy, Smartphone } from "lucide-react";
+import { Download, Smartphone } from "lucide-react";
 import { GithubIcon, AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -101,25 +101,6 @@ export function Hero({ stats }: HeroProps) {
                 </div>
               </div>
             )}
-
-            {/* Quick Tech Specs / Trust Badges */}
-            <div className="pt-4 border-t border-charcoal/80 w-full flex flex-wrap items-center gap-3 text-xs text-muted-gray font-mono">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-graphite/70 border border-charcoal">
-                <Zap className="h-3.5 w-3.5 text-arcade-amber" />
-                <span>ARM64-v8a</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-graphite/70 border border-charcoal">
-                <ShieldCheck className="h-3.5 w-3.5 text-pure-white" />
-                <span>R8 Optimized (~24 MB)</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-graphite/70 border border-charcoal">
-                <Trophy className="h-3.5 w-3.5 text-arcade-magenta" />
-                <span>1 Credit Clear (1CC)</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-graphite/70 border border-charcoal">
-                <span>Android 8.0+</span>
-              </span>
-            </div>
 
           </div>
 
