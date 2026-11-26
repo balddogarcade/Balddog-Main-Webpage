@@ -48,19 +48,19 @@ export function Navbar() {
             Estadísticas
           </Link>
           <Link
-            href="#top-downloads"
+            href="/#top-downloads"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
             Rankings
           </Link>
           <Link
-            href="#features"
+            href="/#features"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
             Características
           </Link>
           <Link
-            href="#philosophy"
+            href="/#philosophy"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
             Filosofía
@@ -69,21 +69,21 @@ export function Navbar() {
 
         {/* Action Button */}
         <div className="hidden sm:flex items-center gap-3">
-          <a href="#download">
+          <Link href="/#download">
             <Button variant="default" size="sm" className="gap-2">
               <Download className="h-4 w-4" />
               <span>Instalar App</span>
             </Button>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu trigger */}
         <div className="flex md:hidden items-center gap-2">
-          <a href="#download">
+          <Link href="/#download">
             <Button variant="default" size="sm" className="h-9 px-3 text-xs">
               <Download className="h-3.5 w-3.5" />
             </Button>
-          </a>
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="rounded-none border border-charcoal bg-carbon p-2 text-silver-gray hover:text-pure-white hover:bg-graphite transition-colors"
@@ -98,14 +98,14 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-charcoal bg-carbon px-4 pt-3 pb-6 space-y-3">
           <Link
-            href="#features"
+            href="/#features"
             onClick={() => setMobileMenuOpen(false)}
             className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
           >
             Características
           </Link>
           <Link
-            href="#philosophy"
+            href="/#philosophy"
             onClick={() => setMobileMenuOpen(false)}
             className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
           >
