@@ -34,7 +34,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-muted-gray font-mono">
-            Partidas de 1 ficha • Reproducibles frame a frame
+            Partidas de 1 ficha • Libretro BSV1 + gzip (~25 KB) frame a frame
           </p>
         </div>
 

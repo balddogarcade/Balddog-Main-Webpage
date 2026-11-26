@@ -16,17 +16,17 @@ export function Features() {
     {
       icon: Trophy,
       title: "Leaderboards 1CC Certificados",
-      system: "RAM Probing Engine",
+      system: "RAM Probing + Puntos Globales",
       description:
-        "Competición real bajo la regla dorada del arcade: 1 Credit Clear. El motor sondea la memoria RAM del emulador en tiempo real con expresiones certificadas. Si metes otra ficha, tu récord no califica.",
+        "Competición real bajo la regla dorada del arcade: 1 Credit Clear. El motor sondea la RAM en tiempo real y otorga Puntos Globales (#1: 100, #2: 75, #3: 50, Top 10: 25, 1CC: 10 pts) para escalar de Novato a Leyenda.",
       badge: "ANTI-CHEAT",
     },
     {
       icon: Users,
       title: "Netplay P2P & Co-op",
-      system: "Salas 2P / 4P",
+      system: "GGRS Rollback + Voz Opus",
       description:
-        "Crea salas privadas con código simple o únete a partidas públicas en segundos. Juega títulos cooperativos como beat 'em ups o reta a duelo en juegos de pelea sin servidores pesados intermedios.",
+        "Salas privadas o públicas 2P/4P con rollback determinista GGRS en Rust, resolución dual WAN/LAN anti-NAT Hairpinning y canal de voz Opus de baja latencia por UDP directo.",
       badge: "MULTIPLAYER",
     },
     {
