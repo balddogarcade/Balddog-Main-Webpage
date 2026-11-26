@@ -93,10 +93,10 @@ export function Hero({ stats }: HeroProps) {
                 </div>
                 <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
-                    Récords 1CC
+                    Juegos Disponibles
                   </span>
                   <span className="font-display text-lg font-bold text-arcade-magenta">
-                    {formatCompactNumber(stats.total_1cc_records)}
+                    {formatCompactNumber(stats.total_games)}
                   </span>
                 </div>
               </div>
