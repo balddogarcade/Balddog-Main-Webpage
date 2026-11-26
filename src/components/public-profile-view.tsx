@@ -40,7 +40,7 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
     <div className="min-h-screen bg-obsidian text-pure-white">
       {/* Top Bar estilo PublicProfileScreen.kt */}
       <div className="border-b border-charcoal bg-pure-black">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-3 flex items-center gap-3">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 bg-carbon border border-steel px-2.5 py-1.5 font-mono text-[11px] font-bold text-pure-white hover:bg-graphite transition-colors rounded-none"
@@ -54,7 +54,7 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
         </div>
       </div>
 
-      <main className="mx-auto max-w-4xl px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
         {/* Hero Card */}
         <section className="bg-carbon border border-charcoal p-4 sm:p-6 space-y-4 rounded-none">
           <div className="flex items-center gap-4">
