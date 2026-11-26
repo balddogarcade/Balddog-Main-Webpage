@@ -1,7 +1,8 @@
 import * as React from "react";
 import Image from "next/image";
-import { Download, Smartphone } from "lucide-react";
-import { GithubIcon, AndroidIcon } from "@/components/icons";
+import Link from "next/link";
+import { Download, Gamepad2, Smartphone } from "lucide-react";
+import { AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -52,16 +53,12 @@ export function Hero({ stats }: HeroProps) {
                   <span>Descargar APK Android</span>
                 </Button>
               </a>
-              <a
-                href="https://github.com/balddogarcade/Balddog-Android-App"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/games">
                 <Button variant="secondary" size="lg" className="gap-2.5 w-full sm:w-auto h-13 px-6 text-base">
-                  <GithubIcon className="h-5 w-5" />
-                  <span>Ver en GitHub</span>
+                  <Gamepad2 className="h-5 w-5" />
+                  <span>Catálogo</span>
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Live Arcade Telemetry Strip */}
