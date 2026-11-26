@@ -16,7 +16,7 @@ export function Philosophy() {
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-obsidian">
                 <Image
                   src="/images/mascot-portrait.jpg"
-                  alt="Mascota Doberman Calvo - bald.dog ARCADE"
+                  alt="CHOPPER, Mascota Doberman Calvo - bald.dog ARCADE"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, 400px"
@@ -25,7 +25,7 @@ export function Philosophy() {
                 <div className="absolute inset-x-3 bottom-3 rounded-xl border border-charcoal bg-obsidian/90 p-3 backdrop-blur-md flex items-center justify-between">
                   <div>
                     <span className="font-display text-xs font-bold uppercase tracking-wider text-pure-white block">
-                      Perro Calvo
+                      CHOPPER — Perro Calvo
                     </span>
                     <span className="text-[10px] text-muted-gray font-mono">
                       Guardián del código y los fichines

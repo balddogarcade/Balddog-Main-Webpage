@@ -17,7 +17,7 @@ export function Footer() {
               <div className="relative h-9 w-9 rounded-xl overflow-hidden border border-charcoal bg-obsidian">
                 <Image
                   src="/images/mascot-portrait.jpg"
-                  alt="bald.dog ARCADE"
+                  alt="CHOPPER - bald.dog ARCADE"
                   fill
                   className="object-cover"
                   sizes="36px"

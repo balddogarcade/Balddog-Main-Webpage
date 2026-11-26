@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-charcoal bg-carbon group-hover:border-steel transition-colors">
             <Image
               src="/images/mascot-portrait.jpg"
-              alt="bald.dog ARCADE"
+              alt="CHOPPER - bald.dog ARCADE"
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="40px"
