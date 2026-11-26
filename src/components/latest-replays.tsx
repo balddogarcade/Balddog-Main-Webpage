@@ -25,17 +25,13 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-none border border-arcade-magenta/30 bg-arcade-magenta/10 px-3 py-1 text-xs font-mono text-arcade-magenta">
-              <Film className="h-3.5 w-3.5" />
-              REPLAYS DETERMINISTAS 1CC
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-pure-white tracking-tight">
+            <Badge variant="mono" className="border-steel text-silver-gray px-3 py-1">
+              <Film className="h-3 w-3 mr-1.5 text-arcade-magenta" />
+              <span>REPLAYS DETERMINISTAS 1CC</span>
+            </Badge>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-pure-white">
               Últimas 6 Repeticiones
             </h2>
-            <p className="text-sm text-muted-gray max-w-2xl">
-              Partidas de 1 ficha reproducibles frame a frame directamente en tu
-              navegador con ROMs descargadas desde IPFS.
-            </p>
           </div>
         </div>
 
