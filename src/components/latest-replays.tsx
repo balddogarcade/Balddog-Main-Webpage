@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Play, ShieldCheck, Clock, Film } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { DiceBearAvatar } from "@/components/dicebear-avatar";
 import type { LatestReplayItem } from "@/lib/arcade-stats";
 import { ReplayPlayerModal } from "@/components/replay-player-modal";
 
@@ -86,13 +88,23 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                       {item.game_title}
                     </h3>
                     <div className="flex items-center justify-between text-xs font-mono text-muted-gray">
-                      <span>
-                        Por{" "}
-                        <span className="text-pure-white font-semibold">
-                          {item.username}
+                      <Link
+                        href={`/u/${encodeURIComponent(item.username)}`}
+                        className="inline-flex items-center gap-2 group/user hover:text-pure-white transition-colors"
+                      >
+                        <DiceBearAvatar
+                          seed={item.avatar_seed}
+                          fallbackSeed={item.username}
+                          size={22}
+                          alt={`Avatar de ${item.username}`}
+                        />
+                        <span>
+                          <span className="text-pure-white font-semibold group-hover/user:underline">
+                            {item.username}
+                          </span>
+                          {item.country_code ? ` (${item.country_code})` : ""}
                         </span>
-                        {item.country_code ? ` (${item.country_code})` : ""}
-                      </span>
+                      </Link>
                       <span>{sizeKb}</span>
                     </div>
                   </div>
