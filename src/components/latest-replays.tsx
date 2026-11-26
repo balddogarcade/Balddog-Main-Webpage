@@ -56,76 +56,78 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                     src={`/images/covers/${item.game_slug}.webp`}
                     alt={item.game_title}
                     fill
-                    className="object-cover object-center opacity-80 group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 18vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/30 to-transparent" />
 
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                  <div className="absolute top-2.5 left-2.5">
+                    {isVerified ? (
+                      <span className="inline-flex items-center gap-1 rounded-none bg-emerald-500/20 border border-emerald-500/40 px-2 py-1 text-[10px] font-mono font-bold text-emerald-300 backdrop-blur-md">
+                        <ShieldCheck className="h-3 w-3" />
+                        VERIFICADO
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 rounded-none bg-arcade-amber/20 border border-arcade-amber/40 px-2 py-1 text-[10px] font-mono font-bold text-arcade-amber backdrop-blur-md">
+                        <Clock className="h-3 w-3" />
+                        1CC
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="absolute top-2.5 right-2.5">
                     <Badge
                       variant="mono"
                       className="bg-obsidian/85 backdrop-blur-md text-[10px]"
                     >
                       {item.system}
                     </Badge>
-                    {isVerified ? (
-                      <span className="inline-flex items-center gap-1 rounded-none bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 text-[10px] font-mono font-bold text-emerald-300 backdrop-blur-md">
-                        <ShieldCheck className="h-3 w-3" />
-                        VERIFICADO
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 rounded-none bg-arcade-amber/20 border border-arcade-amber/40 px-2 py-0.5 text-[10px] font-mono font-bold text-arcade-amber backdrop-blur-md">
-                        <Clock className="h-3 w-3" />
-                        1CC
-                      </span>
-                    )}
                   </div>
                 </div>
 
-                <div className="p-3.5 flex flex-col justify-between flex-1 space-y-3">
-                  <div className="space-y-1.5">
+                <div className="p-3.5 flex flex-col justify-between flex-1 space-y-2.5">
+                  <div className="space-y-1">
                     <h3 className="font-display text-sm font-bold text-pure-white line-clamp-1">
                       {item.game_title}
                     </h3>
-                    <div className="flex items-center justify-between text-xs font-mono text-muted-gray">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-muted-gray">
                       <Link
                         href={`/u/${encodeURIComponent(item.username)}`}
-                        className="inline-flex items-center gap-2 group/user hover:text-pure-white transition-colors"
+                        className="inline-flex items-center gap-1.5 group/user hover:text-pure-white transition-colors min-w-0"
                       >
                         <DiceBearAvatar
                           seed={item.avatar_seed}
                           fallbackSeed={item.username}
-                          size={22}
+                          size={16}
                           alt={`Avatar de ${item.username}`}
                         />
-                        <span>
+                        <span className="truncate">
                           <span className="text-pure-white font-semibold group-hover/user:underline">
                             {item.username}
                           </span>
                           {item.country_code ? ` (${item.country_code})` : ""}
                         </span>
                       </Link>
-                      <span>{sizeKb}</span>
+                      <span className="shrink-0">{sizeKb}</span>
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-charcoal/70 flex items-center justify-between gap-3">
-                    <div>
-                      <div className="text-[10px] font-mono uppercase text-muted-gray">
-                        Puntaje 1CC
-                      </div>
-                      <div className="font-mono text-base font-bold text-arcade-amber">
+                  <div className="pt-2 border-t border-charcoal/70 flex items-center justify-between gap-2 text-xs font-mono">
+                    <div className="min-w-0">
+                      <span className="text-[10px] uppercase text-muted-gray block">
+                        1CC
+                      </span>
+                      <span className="font-bold text-arcade-amber truncate block">
                         {item.score.toLocaleString("es-ES")}
-                      </div>
+                      </span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => setActiveReplay(item)}
-                      className="inline-flex items-center gap-1.5 rounded-xl bg-arcade-magenta px-3.5 py-2 text-xs font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer"
+                      className="inline-flex items-center gap-1 rounded-none bg-arcade-magenta px-2.5 py-1.5 text-[11px] font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer shrink-0"
                     >
-                      <Play className="h-3.5 w-3.5 fill-current" />
-                      Ver Replay
+                      <Play className="h-3 w-3 fill-current" />
+                      Ver
                     </button>
                   </div>
                 </div>
