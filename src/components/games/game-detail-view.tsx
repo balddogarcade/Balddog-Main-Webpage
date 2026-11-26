@@ -29,16 +29,22 @@ export function GameDetailView({ game }: { game: PublicGame }) {
   ].filter((s): s is { label: string; value: string } => Boolean(s.value));
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      <div>
-        <Link
-          href="/games"
-          className="inline-flex items-center gap-2 text-xs font-mono text-silver-gray hover:text-pure-white transition-colors"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Volver al catálogo
-        </Link>
+    <div className="min-h-screen bg-obsidian text-pure-white">
+      <div className="border-b border-charcoal bg-pure-black">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
+          <Link
+            href="/games"
+            className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Volver
+          </Link>
+          <span className="font-display text-sm font-bold uppercase tracking-wider text-pure-white truncate">
+            Ficha de Juego
+          </span>
+        </div>
       </div>
+      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
 
       {/* Hero */}
       <section className="bg-carbon border border-charcoal p-6 rounded-none space-y-6">
@@ -220,6 +226,7 @@ export function GameDetailView({ game }: { game: PublicGame }) {
           </div>
         </div>
       )}
-    </main>
+      </main>
+    </div>
   );
 }

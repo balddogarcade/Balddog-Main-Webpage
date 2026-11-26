@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Gamepad2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Gamepad2 } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CatalogGrid } from "@/components/games/catalog-grid";
@@ -19,7 +20,21 @@ export default async function GamesCatalogPage() {
   return (
     <div className="min-h-screen flex flex-col bg-obsidian text-pure-white">
       <Navbar />
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+      <div className="border-b border-charcoal bg-pure-black">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Volver
+          </Link>
+          <span className="font-display text-sm font-bold uppercase tracking-wider text-pure-white">
+            Catálogo Arcade
+          </span>
+        </div>
+      </div>
+      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
         <div className="border-b border-charcoal pb-6 space-y-2">
           <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-arcade-magenta">
             <Gamepad2 className="h-4 w-4" />
