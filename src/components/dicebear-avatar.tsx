@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createAvatar } from "@dicebear/core";
-import { pixelArt } from "@dicebear/pixel-art";
+import * as pixelArt from "@dicebear/pixel-art";
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
