@@ -39,7 +39,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {replays.map((item) => {
             const isVerified = item.verification_status === "verified";
             const sizeKb = item.replay_size_bytes
@@ -57,7 +57,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                     alt={item.game_title}
                     fill
                     className="object-cover object-center opacity-80 group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 18vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/30 to-transparent" />
 
@@ -82,9 +82,9 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                   </div>
                 </div>
 
-                <div className="p-4 flex flex-col justify-between flex-1 space-y-4">
-                  <div className="space-y-1">
-                    <h3 className="font-display text-base font-bold text-pure-white line-clamp-1">
+                <div className="p-3.5 flex flex-col justify-between flex-1 space-y-3">
+                  <div className="space-y-1.5">
+                    <h3 className="font-display text-sm font-bold text-pure-white line-clamp-1">
                       {item.game_title}
                     </h3>
                     <div className="flex items-center justify-between text-xs font-mono text-muted-gray">
