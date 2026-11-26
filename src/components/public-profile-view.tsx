@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { DiceBearAvatar } from "@/components/dicebear-avatar";
 import { ReplayPlayerModal } from "@/components/replay-player-modal";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { formatPlayDuration, type LatestReplayItem } from "@/lib/arcade-stats";
 import {
   type PublicWebProfile,
@@ -40,17 +41,25 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
     <div className="min-h-screen bg-obsidian text-pure-white">
       {/* Top Bar estilo PublicProfileScreen.kt */}
       <div className="border-b border-charcoal bg-pure-black">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 bg-carbon border border-steel px-2.5 py-1.5 font-mono text-[11px] font-bold text-pure-white hover:bg-graphite transition-colors rounded-none"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            VOLVER
-          </Link>
-          <span className="font-display text-sm sm:text-base font-bold tracking-tight text-pure-white uppercase">
-            PERFIL PÚBLICO
-          </span>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 bg-carbon border border-steel px-2.5 py-1.5 font-mono text-[11px] font-bold text-pure-white hover:bg-graphite transition-colors rounded-none"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              VOLVER
+            </Link>
+            <span className="font-display text-sm sm:text-base font-bold tracking-tight text-pure-white uppercase">
+              PERFIL PÚBLICO
+            </span>
+          </div>
+          <Breadcrumb
+            items={[
+              { label: "Inicio", href: "/" },
+              { label: profile.username },
+            ]}
+          />
         </div>
       </div>
 

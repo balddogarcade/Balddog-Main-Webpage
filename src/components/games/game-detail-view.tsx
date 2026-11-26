@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowLeft, Cpu, Gamepad2, Play, Users, X } from "lucide-react";
 import type { PublicGame } from "@/types/game";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { IpfsImage } from "@/components/games/ipfs-image";
 
 export function GameDetailView({ game }: { game: PublicGame }) {
@@ -32,17 +33,26 @@ export function GameDetailView({ game }: { game: PublicGame }) {
   return (
     <div className="min-h-screen bg-obsidian text-pure-white">
       <div className="border-b border-charcoal bg-pure-black">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
-          <Link
-            href="/games"
-            className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Volver
-          </Link>
-          <span className="font-display text-sm font-bold uppercase tracking-wider text-pure-white truncate">
-            Ficha de Juego
-          </span>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/games"
+              className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Volver
+            </Link>
+            <span className="font-display text-sm font-bold uppercase tracking-wider text-pure-white truncate">
+              Ficha de Juego
+            </span>
+          </div>
+          <Breadcrumb
+            items={[
+              { label: "Inicio", href: "/" },
+              { label: "Catálogo", href: "/games" },
+              { label: game.title },
+            ]}
+          />
         </div>
       </div>
       <main className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
