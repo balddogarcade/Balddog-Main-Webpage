@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { Sparkles, Layers, ShieldCheck, HeartHandshake } from "lucide-react";
+import { Sparkles, Layers, HeartHandshake } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export function Philosophy() {

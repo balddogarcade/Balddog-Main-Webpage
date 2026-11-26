@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { Download, QrCode, Smartphone, ExternalLink, CheckCircle2, ShieldCheck, Terminal, FileCode, HardDrive } from "lucide-react";
+import { Download, QrCode, ExternalLink, ShieldCheck, Terminal, FileCode } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 export function DownloadSection() {
   const directApkUrl =

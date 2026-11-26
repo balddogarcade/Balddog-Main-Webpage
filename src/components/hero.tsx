@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Gamepad2, Smartphone } from "lucide-react";
+import { Gamepad2 } from "lucide-react";
 import { AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

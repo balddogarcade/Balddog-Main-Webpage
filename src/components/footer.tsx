@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, Shield, Terminal, ArrowUpRight } from "lucide-react";
+import { Globe, ArrowUpRight } from "lucide-react";
 import { GithubIcon, DiscordIcon, XIcon } from "@/components/icons";
 
 export function Footer() {

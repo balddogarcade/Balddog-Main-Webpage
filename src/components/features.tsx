@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Cpu, Trophy, Users, Globe2, Eye, ShieldCheck, Flame, Radio } from "lucide-react";
+import { Cpu, Trophy, Users, Globe2, Eye, ShieldCheck, Radio } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
