@@ -46,7 +46,7 @@ interface FbneoWasmModule {
 declare global {
   interface Window {
     createFbneoModule?: (opts?: {
-      wasmBinary?: ArrayBuffer;
+      wasmBinary?: Uint8Array;
       locateFile?: (path: string) => string;
     }) => Promise<FbneoWasmModule>;
   }
@@ -189,14 +189,22 @@ export function ReplayPlayerModal({
         const wasmResp = await fetch("/wasm/fbneo.wasm.gz", {
           signal: abortController.signal,
         });
-        if (!wasmResp.ok || !wasmResp.body) {
+        if (!wasmResp.ok) {
           throw new Error(
             `No se pudo descargar /wasm/fbneo.wasm.gz (HTTP ${wasmResp.status})`
           );
         }
-        const wasmBinary = await new Response(
-          wasmResp.body.pipeThrough(new DecompressionStream("gzip"))
-        ).arrayBuffer();
+        const rawWasmBytes = new Uint8Array(await wasmResp.arrayBuffer());
+        let wasmBinary: Uint8Array;
+        if (rawWasmBytes[0] === 0x1f && rawWasmBytes[1] === 0x8b) {
+          const ds = new DecompressionStream("gzip");
+          const decompressed = await new Response(
+            new Blob([rawWasmBytes]).stream().pipeThrough(ds)
+          ).arrayBuffer();
+          wasmBinary = new Uint8Array(decompressed);
+        } else {
+          wasmBinary = rawWasmBytes;
+        }
         if (cancelled) return;
 
         const mod = await window.createFbneoModule({
