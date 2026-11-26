@@ -43,3 +43,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
    - No existen cuentas anónimas ni de visitantes en la plataforma; evitar textos como "Sin cuentas forzadas" o similares.
    - Para validar lint en código fuente sin escanear `.open-next/**`, ejecutar `npx eslint src`.
 5. **Referencia técnica:** Consulta [docs/CLOUDFLARE_AND_RELEASES.md](docs/CLOUDFLARE_AND_RELEASES.md) para arquitectura, comandos y troubleshooting.
+
+---
+
+## Analítica Web y Mantenimiento (`Cloudflare Web Analytics` + `pg_cron`)
+
+- **Cloudflare Web Analytics:** Activo con `auto_install: True` para `bald.dog`. No insertar el snippet de beacon manualmente en `src/app/layout.tsx`.
+- **Supabase `pg_cron`:** El job `cleanup-stale-rooms` cierra salas inactivas cada 5 minutos, asegurando que las estadísticas públicas en `get_public_arcade_stats()` reflejen salas activas reales.
+- **Referencia:** [docs/ANALYTICS_AND_MAINTENANCE.md](docs/ANALYTICS_AND_MAINTENANCE.md).
