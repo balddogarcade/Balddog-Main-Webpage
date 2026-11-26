@@ -420,12 +420,12 @@ export function ReplayPlayerModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-pure-black/85 backdrop-blur-md p-4">
       <div
         ref={containerRef}
-        className="relative w-full max-w-4xl rounded-2xl border border-charcoal bg-obsidian shadow-2xl overflow-hidden flex flex-col"
+        className="relative w-full max-w-4xl rounded-none border border-charcoal bg-obsidian shadow-2xl overflow-hidden flex flex-col"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-charcoal bg-carbon/80">
           <div className="flex items-center gap-3 min-w-0">
-            <span className="inline-flex h-2.5 w-2.5 rounded-full bg-arcade-magenta animate-pulse" />
+            <span className="inline-flex h-2.5 w-2.5 rounded-none bg-arcade-magenta animate-pulse" />
             <div className="min-w-0">
               <h3 className="font-display text-base font-bold text-pure-white truncate">
                 {replay.game_title}
@@ -444,7 +444,7 @@ export function ReplayPlayerModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1.5 text-muted-gray hover:text-pure-white hover:bg-charcoal transition-colors"
+            className="rounded-none p-1.5 text-muted-gray hover:text-pure-white hover:bg-charcoal transition-colors"
             aria-label="Cerrar reproductor"
           >
             <X className="h-5 w-5" />
@@ -497,7 +497,7 @@ export function ReplayPlayerModal({
 
               {/* Barra de progreso IPFS */}
               {stage === "ipfs" && ipfsProgress && (
-                <div className="rounded-xl border border-charcoal bg-carbon/90 p-4 space-y-2">
+                <div className="rounded-none border border-charcoal bg-carbon/90 p-4 space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-pure-white truncate">
                       {ipfsProgress.currentFile} ({ipfsProgress.fileIndex}/
@@ -507,9 +507,9 @@ export function ReplayPlayerModal({
                       {ipfsProgress.percent}%
                     </span>
                   </div>
-                  <div className="h-2 w-full rounded-full bg-graphite overflow-hidden">
+                  <div className="h-2 w-full rounded-none bg-graphite overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-arcade-amber to-arcade-magenta transition-all duration-150"
+                      className="h-full rounded-none bg-gradient-to-r from-arcade-amber to-arcade-magenta transition-all duration-150"
                       style={{ width: `${ipfsProgress.percent}%` }}
                     />
                   </div>
@@ -524,7 +524,7 @@ export function ReplayPlayerModal({
               )}
 
               {stage === "error" && errorMsg && (
-                <div className="rounded-xl border border-red-500/40 bg-red-950/30 p-4 space-y-3">
+                <div className="rounded-none border border-red-500/40 bg-red-950/30 p-4 space-y-3">
                   <div className="flex items-start gap-2.5 text-xs text-red-200">
                     <AlertTriangle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                     <span>{errorMsg}</span>
@@ -533,14 +533,14 @@ export function ReplayPlayerModal({
                     <button
                       type="button"
                       onClick={onClose}
-                      className="rounded-lg border border-charcoal px-3 py-1.5 text-xs font-mono text-muted-gray hover:text-pure-white"
+                      className="rounded-none border border-charcoal px-3 py-1.5 text-xs font-mono text-muted-gray hover:text-pure-white"
                     >
                       Cancelar
                     </button>
                     <button
                       type="button"
                       onClick={() => setRetryKey((k) => k + 1)}
-                      className="rounded-lg bg-arcade-magenta px-3 py-1.5 text-xs font-mono font-bold text-pure-white hover:opacity-90"
+                      className="rounded-none bg-arcade-magenta px-3 py-1.5 text-xs font-mono font-bold text-pure-white hover:opacity-90"
                     >
                       Reintentar
                     </button>
@@ -562,7 +562,7 @@ export function ReplayPlayerModal({
           <div className="px-5 py-3.5 border-t border-charcoal bg-carbon/90 space-y-2.5">
             {/* Barra de avance por frames */}
             <div className="space-y-1">
-              <div className="h-1.5 w-full rounded-full bg-graphite overflow-hidden">
+              <div className="h-1.5 w-full rounded-none bg-graphite overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-arcade-amber to-arcade-magenta transition-all duration-75"
                   style={{ width: `${progressPct}%` }}
@@ -587,7 +587,7 @@ export function ReplayPlayerModal({
                 <button
                   type="button"
                   onClick={() => setIsPlaying((p) => !p)}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-arcade-magenta px-3 py-1.5 text-xs font-mono font-bold text-pure-white hover:opacity-90"
+                  className="inline-flex items-center gap-1.5 rounded-none bg-arcade-magenta px-3 py-1.5 text-xs font-mono font-bold text-pure-white hover:opacity-90"
                 >
                   {isPlaying ? (
                     <>
@@ -603,18 +603,18 @@ export function ReplayPlayerModal({
                 <button
                   type="button"
                   onClick={handleRestart}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-charcoal bg-obsidian px-2.5 py-1.5 text-xs font-mono text-pure-white hover:border-steel"
+                  className="inline-flex items-center gap-1.5 rounded-none border border-charcoal bg-obsidian px-2.5 py-1.5 text-xs font-mono text-pure-white hover:border-steel"
                 >
                   <RotateCcw className="h-3.5 w-3.5" /> Reiniciar
                 </button>
 
-                <div className="flex items-center rounded-lg border border-charcoal bg-obsidian p-0.5">
+                <div className="flex items-center rounded-none border border-charcoal bg-obsidian p-0.5">
                   {([1, 2, 4] as const).map((s) => (
                     <button
                       key={s}
                       type="button"
                       onClick={() => setSpeed(s)}
-                      className={`rounded-md px-2 py-1 text-xs font-mono font-bold transition-colors ${
+                      className={`rounded-none px-2 py-1 text-xs font-mono font-bold transition-colors ${
                         speed === s
                           ? "bg-arcade-amber text-pure-black"
                           : "text-muted-gray hover:text-pure-white"
@@ -630,7 +630,7 @@ export function ReplayPlayerModal({
                 <button
                   type="button"
                   onClick={() => setIsMuted((m) => !m)}
-                  className="rounded-lg border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
+                  className="rounded-none border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
                   aria-label={isMuted ? "Activar audio" : "Silenciar"}
                 >
                   {isMuted ? (
@@ -642,7 +642,7 @@ export function ReplayPlayerModal({
                 <button
                   type="button"
                   onClick={handleFullscreen}
-                  className="rounded-lg border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
+                  className="rounded-none border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
                   aria-label="Pantalla completa"
                 >
                   <Maximize2 className="h-4 w-4" />
@@ -668,7 +668,7 @@ function LoadingStepRow({
   return (
     <div className="flex items-center gap-3 text-xs font-mono">
       <div
-        className={`flex h-7 w-7 items-center justify-center rounded-lg border ${
+        className={`flex h-7 w-7 items-center justify-center rounded-none border ${
           status === "done"
             ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400"
             : status === "active"

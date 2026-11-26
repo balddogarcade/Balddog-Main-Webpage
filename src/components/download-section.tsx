@@ -44,7 +44,7 @@ export function DownloadSection() {
                 
                 {/* QR Code Container */}
                 <div className="flex flex-col items-center shrink-0">
-                  <div className="p-3.5 rounded-2xl bg-pure-white border-2 border-pure-white shadow-2xl">
+                  <div className="p-3.5 rounded-none bg-pure-white border-2 border-pure-white shadow-2xl">
                     <QRCodeSVG
                       value={directApkUrl}
                       size={144}
@@ -110,15 +110,15 @@ export function DownloadSection() {
                   ¿Cómo instalar en tu dispositivo Android?
                 </span>
                 <ol className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-silver-gray">
-                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-xl border border-charcoal">
+                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-none border border-charcoal">
                     <span className="font-mono text-arcade-magenta font-bold">1.</span>
                     <span>Descarga el archivo APK desde el botón o escaneando el QR.</span>
                   </li>
-                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-xl border border-charcoal">
+                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-none border border-charcoal">
                     <span className="font-mono text-arcade-magenta font-bold">2.</span>
                     <span>Acepta &ldquo;Instalar fuentes desconocidas&rdquo; en tu navegador si te lo solicita.</span>
                   </li>
-                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-xl border border-charcoal">
+                  <li className="flex items-start gap-2 bg-graphite/40 p-3 rounded-none border border-charcoal">
                     <span className="font-mono text-arcade-magenta font-bold">3.</span>
                     <span>Abre la app, otorga permisos de almacenamiento y ¡a jugar!</span>
                   </li>
@@ -126,7 +126,7 @@ export function DownloadSection() {
               </div>
 
               {/* VirusTotal & Integrity Transparency Banner */}
-              <div className="mt-6 p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/15 space-y-2.5">
+              <div className="mt-6 p-4 rounded-none border border-emerald-500/30 bg-emerald-950/15 space-y-2.5">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />

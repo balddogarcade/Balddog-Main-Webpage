@@ -31,7 +31,7 @@ function GamePosterCard({
       : 0;
 
   return (
-    <div className="group flex flex-col rounded-2xl border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel hover:-translate-y-1 transition-all duration-300">
+    <div className="group flex flex-col rounded-none border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel hover:-translate-y-1 transition-all duration-300">
       {/* Poster 3:4 */}
       <div className="relative aspect-[3/4] w-full bg-obsidian overflow-hidden">
         <Image
@@ -45,7 +45,7 @@ function GamePosterCard({
         {/* Rank Badge */}
         <div className="absolute top-2.5 left-2.5">
           <span
-            className={`inline-flex items-center justify-center rounded-lg px-2.5 py-1 font-mono text-xs font-bold backdrop-blur-md border ${
+            className={`inline-flex items-center justify-center rounded-none px-2.5 py-1 font-mono text-xs font-bold backdrop-blur-md border ${
               isFirst
                 ? mode === "downloads"
                   ? "bg-arcade-magenta/90 text-pure-white border-arcade-magenta"
@@ -101,9 +101,9 @@ function GamePosterCard({
                 {formatPlayDuration(game.total_play_seconds)}
               </span>
             </div>
-            <div className="h-1 w-full rounded-full bg-graphite overflow-hidden">
+            <div className="h-1 w-full rounded-none bg-graphite overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-arcade-amber to-arcade-magenta"
+                className="h-full rounded-none bg-gradient-to-r from-arcade-amber to-arcade-magenta"
                 style={{ width: `${progressPct}%` }}
               />
             </div>

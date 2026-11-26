@@ -119,7 +119,7 @@ export function ArcadePulse({ stats }: ArcadePulseProps) {
                     </div>
                     <p className="text-xs text-silver-gray">{item.detail}</p>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-graphite border border-charcoal shrink-0">
+                  <div className="p-2.5 rounded-none bg-graphite border border-charcoal shrink-0">
                     <Icon className={`h-5 w-5 ${item.accent}`} />
                   </div>
                 </CardContent>

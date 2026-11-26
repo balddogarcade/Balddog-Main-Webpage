@@ -18,7 +18,7 @@ export function Hero({ stats }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 border-b border-charcoal/60 bg-gradient-to-b from-obsidian via-obsidian to-carbon/40">
       {/* Subtle background glow effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-arcade-magenta/10 blur-[130px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-arcade-magenta/10 blur-[130px] pointer-events-none rounded-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -27,8 +27,8 @@ export function Hero({ stats }: HeroProps) {
           <div className="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
             
             {/* Official Slogan Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-arcade-magenta/50 bg-arcade-magenta/10 px-4 py-1.5 backdrop-blur-sm">
-              <span className="flex h-2 w-2 rounded-full bg-arcade-magenta animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-none border border-arcade-magenta/50 bg-arcade-magenta/10 px-4 py-1.5 backdrop-blur-sm">
+              <span className="flex h-2 w-2 rounded-none bg-arcade-magenta animate-pulse" />
               <span className="font-display text-xs sm:text-sm font-semibold tracking-wide text-pure-white">
                 “El patio de recreo de los perros calvos.”
               </span>
@@ -67,7 +67,7 @@ export function Hero({ stats }: HeroProps) {
             {/* Live Arcade Telemetry Strip */}
             {stats && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full pt-2">
-                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                <div className="rounded-none border border-charcoal bg-carbon/80 px-3.5 py-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
                     Jugadores
                   </span>
@@ -75,7 +75,7 @@ export function Hero({ stats }: HeroProps) {
                     {formatCompactNumber(stats.total_users)}
                   </span>
                 </div>
-                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                <div className="rounded-none border border-charcoal bg-carbon/80 px-3.5 py-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
                     Tiempo Jugado
                   </span>
@@ -83,7 +83,7 @@ export function Hero({ stats }: HeroProps) {
                     {formatPlayDuration(stats.total_play_seconds)}
                   </span>
                 </div>
-                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                <div className="rounded-none border border-charcoal bg-carbon/80 px-3.5 py-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
                     Partidas
                   </span>
@@ -91,7 +91,7 @@ export function Hero({ stats }: HeroProps) {
                     {formatCompactNumber(stats.total_sessions)}
                   </span>
                 </div>
-                <div className="rounded-xl border border-charcoal bg-carbon/80 px-3.5 py-2.5">
+                <div className="rounded-none border border-charcoal bg-carbon/80 px-3.5 py-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-muted-gray block">
                     Juegos Disponibles
                   </span>
@@ -106,9 +106,9 @@ export function Hero({ stats }: HeroProps) {
 
           {/* Right Column: Hero Mascot Artwork */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/5] rounded-3xl overflow-hidden border-2 border-charcoal bg-carbon p-2 shadow-2xl transition-transform duration-500 hover:border-arcade-magenta/60 hover:shadow-[0_0_50px_rgba(255,42,133,0.3)]">
+            <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/5] rounded-none overflow-hidden border-2 border-charcoal bg-carbon p-2 shadow-2xl transition-transform duration-500 hover:border-arcade-magenta/60 hover:shadow-[0_0_50px_rgba(255,42,133,0.3)]">
               
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-obsidian">
+              <div className="relative w-full h-full rounded-none overflow-hidden bg-obsidian">
                 <Image
                   src="/images/mascot-pointing.jpg"
                   alt="CHOPPER, Doberman calvo señalando al jugador - bald.dog ARCADE"
@@ -119,7 +119,7 @@ export function Hero({ stats }: HeroProps) {
                 />
 
                 {/* Overlay Badge at Bottom */}
-                <div className="absolute inset-x-3 bottom-3 rounded-xl border border-charcoal/90 bg-obsidian/85 p-3.5 backdrop-blur-md flex items-center justify-between">
+                <div className="absolute inset-x-3 bottom-3 rounded-none border border-charcoal/90 bg-obsidian/85 p-3.5 backdrop-blur-md flex items-center justify-between">
                   <div className="flex flex-col">
                     <span className="font-display text-xs font-bold uppercase tracking-wider text-pure-white">
                       Te queremos en el arcade

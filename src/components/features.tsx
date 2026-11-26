@@ -89,7 +89,7 @@ export function Features() {
 
                 <CardHeader className="space-y-3 pb-3">
                   <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-graphite border border-charcoal group-hover:border-steel text-pure-white transition-colors">
+                    <div className="p-2.5 rounded-none bg-graphite border border-charcoal group-hover:border-steel text-pure-white transition-colors">
                       <Icon className="h-5 w-5 text-pure-white group-hover:text-arcade-magenta transition-colors" />
                     </div>
                     <Badge variant="mono" className="text-[10px]">

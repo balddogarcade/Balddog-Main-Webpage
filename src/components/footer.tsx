@@ -14,7 +14,7 @@ export function Footer() {
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative h-9 w-9 rounded-xl overflow-hidden border border-charcoal bg-obsidian">
+              <div className="relative h-9 w-9 rounded-none overflow-hidden border border-charcoal bg-obsidian">
                 <Image
                   src="/images/mascot-portrait.jpg"
                   alt="CHOPPER - bald.dog ARCADE"

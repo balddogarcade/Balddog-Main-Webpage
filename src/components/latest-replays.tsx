@@ -25,7 +25,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-arcade-magenta/30 bg-arcade-magenta/10 px-3 py-1 text-xs font-mono text-arcade-magenta">
+            <div className="inline-flex items-center gap-2 rounded-none border border-arcade-magenta/30 bg-arcade-magenta/10 px-3 py-1 text-xs font-mono text-arcade-magenta">
               <Film className="h-3.5 w-3.5" />
               REPLAYS DETERMINISTAS 1CC
             </div>
@@ -49,7 +49,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
             return (
               <div
                 key={item.id}
-                className="group flex flex-col rounded-2xl border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel transition-all duration-300"
+                className="group flex flex-col rounded-none border border-charcoal bg-carbon/90 overflow-hidden hover:border-steel transition-all duration-300"
               >
                 <div className="relative h-40 w-full bg-obsidian overflow-hidden">
                   <Image
@@ -69,12 +69,12 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                       {item.system}
                     </Badge>
                     {isVerified ? (
-                      <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 text-[10px] font-mono font-bold text-emerald-300 backdrop-blur-md">
+                      <span className="inline-flex items-center gap-1 rounded-none bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 text-[10px] font-mono font-bold text-emerald-300 backdrop-blur-md">
                         <ShieldCheck className="h-3 w-3" />
                         VERIFICADO
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 rounded-md bg-arcade-amber/20 border border-arcade-amber/40 px-2 py-0.5 text-[10px] font-mono font-bold text-arcade-amber backdrop-blur-md">
+                      <span className="inline-flex items-center gap-1 rounded-none bg-arcade-amber/20 border border-arcade-amber/40 px-2 py-0.5 text-[10px] font-mono font-bold text-arcade-amber backdrop-blur-md">
                         <Clock className="h-3 w-3" />
                         1CC
                       </span>
@@ -122,7 +122,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                     <button
                       type="button"
                       onClick={() => setActiveReplay(item)}
-                      className="inline-flex items-center gap-1.5 rounded-xl bg-arcade-magenta px-3.5 py-2 text-xs font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer"
+                      className="inline-flex items-center gap-1.5 rounded-none bg-arcade-magenta px-3.5 py-2 text-xs font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
                       Ver Replay

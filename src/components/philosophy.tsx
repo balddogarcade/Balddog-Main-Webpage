@@ -12,8 +12,8 @@ export function Philosophy() {
           
           {/* Left Column: Mascot Portrait Stage */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-charcoal bg-carbon p-2 shadow-2xl group hover:border-arcade-magenta/50 transition-colors">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-obsidian">
+            <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-none overflow-hidden border-2 border-charcoal bg-carbon p-2 shadow-2xl group hover:border-arcade-magenta/50 transition-colors">
+              <div className="relative w-full h-full rounded-none overflow-hidden bg-obsidian">
                 <Image
                   src="/images/mascot-portrait.jpg"
                   alt="CHOPPER, Mascota Doberman Calvo - bald.dog ARCADE"
@@ -22,7 +22,7 @@ export function Philosophy() {
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
                 
-                <div className="absolute inset-x-3 bottom-3 rounded-xl border border-charcoal bg-obsidian/90 p-3 backdrop-blur-md flex items-center justify-between">
+                <div className="absolute inset-x-3 bottom-3 rounded-none border border-charcoal bg-obsidian/90 p-3 backdrop-blur-md flex items-center justify-between">
                   <div>
                     <span className="font-display text-xs font-bold uppercase tracking-wider text-pure-white block">
                       CHOPPER — Perro Calvo
@@ -59,7 +59,7 @@ export function Philosophy() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full pt-4">
-              <div className="p-4 rounded-xl border border-charcoal bg-graphite/40">
+              <div className="p-4 rounded-none border border-charcoal bg-graphite/40">
                 <div className="flex items-center gap-2 mb-1.5">
                   <Layers className="h-4 w-4 text-pure-white" />
                   <span className="font-display text-sm font-bold text-pure-white">Poster-First 3:4</span>
@@ -69,7 +69,7 @@ export function Philosophy() {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl border border-charcoal bg-graphite/40">
+              <div className="p-4 rounded-none border border-charcoal bg-graphite/40">
                 <div className="flex items-center gap-2 mb-1.5">
                   <HeartHandshake className="h-4 w-4 text-arcade-magenta" />
                   <span className="font-display text-sm font-bold text-pure-white">Comunidad & Código Libre</span>

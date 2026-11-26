@@ -11,7 +11,7 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const baseStyles =
-    "inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-medium transition-colors select-none";
+    "inline-flex items-center rounded-none px-2.5 py-0.5 text-xs font-medium transition-colors select-none";
 
   const variantStyles = {
     default:
