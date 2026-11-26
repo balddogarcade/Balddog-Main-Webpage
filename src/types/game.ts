@@ -1,0 +1,33 @@
+export interface PublicGame {
+  id: string;
+  slug: string;
+  title: string;
+  system: string;
+  cover_url: string | null;
+  max_players: number;
+  is_coop: boolean;
+  download_count: number;
+  total_play_seconds: number;
+  game_name: string | null;
+  adb_title: string | null;
+  short_title: string | null;
+  manufacturer: string | null;
+  year: string | null;
+  genre: string | null;
+  serie: string | null;
+  players: number | null;
+  nplayers: string | null;
+  emulator_name: string | null;
+  input_controls: string | null;
+  input_buttons: number | null;
+  buttons_colors: string | null;
+  history: string | null;
+  history_copyright_long: string | null;
+  youtube_video_id: string | null;
+  url_image_ingame: string | null;
+  url_image_title: string | null;
+  url_image_marquee: string | null;
+  url_image_cabinet: string | null;
+  url_image_flyer: string | null;
+  url_icon: string | null;
+}
