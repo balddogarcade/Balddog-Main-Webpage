@@ -1,6 +1,4 @@
 import * as React from "react";
-import { createAvatar } from "@dicebear/core";
-import * as pixelArt from "@dicebear/pixel-art";
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +11,7 @@ export interface DiceBearAvatarProps {
 }
 
 /**
- * Renderiza un avatar determinístico DiceBear Pixel Art (v9.x) en marco cuadrado
+ * Renderiza un avatar determinístico DiceBear Pixel Art (11.x) en marco cuadrado
  * acorde al manual de marca de bald.dog ARCADE.
  */
 export function DiceBearAvatar({
@@ -26,12 +24,9 @@ export function DiceBearAvatar({
   const effectiveSeed =
     seed?.trim() || fallbackSeed?.trim() || "";
 
-  const dataUri = React.useMemo(() => {
+  const avatarUrl = React.useMemo(() => {
     if (!effectiveSeed) return null;
-    return createAvatar(pixelArt, {
-      seed: effectiveSeed,
-      size,
-    }).toDataUri();
+    return `https://api.dicebear.com/11.x/pixel-art/svg?seed=${encodeURIComponent(effectiveSeed)}&size=${size}`;
   }, [effectiveSeed, size]);
 
   return (
@@ -42,10 +37,10 @@ export function DiceBearAvatar({
       )}
       style={{ width: size + 8, height: size + 8 }}
     >
-      {dataUri ? (
+      {avatarUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={dataUri}
+          src={avatarUrl}
           alt={alt}
           width={size}
           height={size}
