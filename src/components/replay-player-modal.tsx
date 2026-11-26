@@ -47,6 +47,10 @@ declare global {
   interface Window {
     createFbneoModule?: (opts?: {
       wasmBinary?: Uint8Array;
+      instantiateWasm?: (
+        imports: WebAssembly.Imports,
+        successCallback: (instance: WebAssembly.Instance) => void
+      ) => Record<string, never>;
       locateFile?: (path: string) => string;
     }) => Promise<FbneoWasmModule>;
   }
@@ -207,10 +211,30 @@ export function ReplayPlayerModal({
         }
         if (cancelled) return;
 
-        const mod = await window.createFbneoModule({
-          wasmBinary,
-          locateFile: (path) => `/wasm/${path}`,
+        let rejectWasmInit: ((err: unknown) => void) | null = null;
+        const wasmErrorPromise = new Promise<never>((_, reject) => {
+          rejectWasmInit = reject;
         });
+
+        const mod = await Promise.race([
+          window.createFbneoModule({
+            locateFile: (path) => `/wasm/${path}`,
+            instantiateWasm: (imports, successCallback) => {
+              WebAssembly.instantiate(
+                wasmBinary as BufferSource,
+                imports
+              )
+                .then((result) => {
+                  successCallback(result.instance);
+                })
+                .catch((err) => {
+                  rejectWasmInit?.(err);
+                });
+              return {};
+            },
+          }),
+          wasmErrorPromise,
+        ]);
         if (cancelled) return;
 
         mod.FS.mkdirTree("/roms");
