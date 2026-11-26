@@ -85,9 +85,12 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
 
                 <div className="p-3.5 flex flex-col justify-between flex-1 space-y-2.5">
                   <div className="space-y-1">
-                    <h3 className="font-display text-sm font-bold text-pure-white line-clamp-1">
+                    <Link
+                      href={`/games/${encodeURIComponent(item.game_slug)}`}
+                      className="font-display text-sm font-bold text-pure-white hover:text-arcade-magenta transition-colors line-clamp-1 block"
+                    >
                       {item.game_title}
-                    </h3>
+                    </Link>
                     <div className="flex items-center justify-between text-[11px] font-mono text-muted-gray">
                       <Link
                         href={`/u/${encodeURIComponent(item.username)}`}
