@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowLeft, Cpu, Gamepad2, Users, Youtube, X } from "lucide-react";
+import { ArrowLeft, Cpu, Gamepad2, Play, Users, X } from "lucide-react";
 import type { PublicGame } from "@/types/game";
 
 export function GameDetailView({ game }: { game: PublicGame }) {
@@ -159,7 +159,7 @@ export function GameDetailView({ game }: { game: PublicGame }) {
           {game.youtube_video_id && (
             <section className="bg-carbon border border-charcoal p-5 rounded-none space-y-3">
               <div className="flex items-center gap-2 font-display text-base font-bold text-pure-white">
-                <Youtube className="h-4 w-4 text-arcade-magenta" />
+                <Play className="h-4 w-4 text-arcade-magenta" />
                 <h2>Gameplay</h2>
               </div>
               <div className="aspect-video w-full bg-obsidian border border-charcoal overflow-hidden">

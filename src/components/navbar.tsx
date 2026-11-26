@@ -42,7 +42,13 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="#stats"
+            href="/games"
+            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
+          >
+            Catálogo
+          </Link>
+          <Link
+            href="/#stats"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
             Estadísticas
