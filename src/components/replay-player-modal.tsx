@@ -46,6 +46,7 @@ interface FbneoWasmModule {
 declare global {
   interface Window {
     createFbneoModule?: (opts?: {
+      wasmBinary?: ArrayBuffer;
       locateFile?: (path: string) => string;
     }) => Promise<FbneoWasmModule>;
   }
@@ -185,7 +186,21 @@ export function ReplayPlayerModal({
         await loadFbneoScript();
         if (cancelled || !window.createFbneoModule) return;
 
+        const wasmResp = await fetch("/wasm/fbneo.wasm.gz", {
+          signal: abortController.signal,
+        });
+        if (!wasmResp.ok || !wasmResp.body) {
+          throw new Error(
+            `No se pudo descargar /wasm/fbneo.wasm.gz (HTTP ${wasmResp.status})`
+          );
+        }
+        const wasmBinary = await new Response(
+          wasmResp.body.pipeThrough(new DecompressionStream("gzip"))
+        ).arrayBuffer();
+        if (cancelled) return;
+
         const mod = await window.createFbneoModule({
+          wasmBinary,
           locateFile: (path) => `/wasm/${path}`,
         });
         if (cancelled) return;
