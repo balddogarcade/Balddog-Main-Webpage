@@ -3,11 +3,32 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Download, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  const isHomeActive = pathname === "/";
+  const isCatalogActive = pathname === "/games" || pathname.startsWith("/games/");
+  const isRoomsActive =
+    pathname === "/rooms" ||
+    pathname.startsWith("/rooms/") ||
+    pathname.startsWith("/room/");
+
+  const getDesktopLinkClass = (active: boolean) =>
+    `text-sm font-medium transition-colors ${
+      active
+        ? "text-arcade-magenta hover:text-pure-white"
+        : "text-silver-gray hover:text-pure-white"
+    }`;
+
+  const getMobileLinkClass = (active: boolean) =>
+    `block rounded-none px-3 py-2 text-sm font-medium hover:bg-graphite hover:text-pure-white ${
+      active ? "text-arcade-magenta" : "text-silver-gray"
+    }`;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-charcoal/80 bg-obsidian/85 backdrop-blur-md">
@@ -41,22 +62,13 @@ export function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link
-            href="/"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
+          <Link href="/" className={getDesktopLinkClass(isHomeActive)}>
             Inicio
           </Link>
-          <Link
-            href="/games"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
+          <Link href="/games" className={getDesktopLinkClass(isCatalogActive)}>
             Catálogo
           </Link>
-          <Link
-            href="/rooms"
-            className="text-sm font-medium text-arcade-magenta hover:text-pure-white transition-colors"
-          >
+          <Link href="/rooms" className={getDesktopLinkClass(isRoomsActive)}>
             Salas en Vivo
           </Link>
         </nav>
@@ -94,21 +106,21 @@ export function Navbar() {
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
+            className={getMobileLinkClass(isHomeActive)}
           >
             Inicio
           </Link>
           <Link
             href="/games"
             onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
+            className={getMobileLinkClass(isCatalogActive)}
           >
             Catálogo
           </Link>
           <Link
             href="/rooms"
             onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-none px-3 py-2 text-sm font-medium text-arcade-magenta hover:bg-graphite hover:text-pure-white"
+            className={getMobileLinkClass(isRoomsActive)}
           >
             Salas en Vivo
           </Link>
