@@ -42,9 +42,18 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
   return (
     <section
       id="replays"
-      className="relative py-16 lg:py-24 border-b border-charcoal/60 bg-obsidian"
+      className="relative overflow-hidden py-16 lg:py-24 border-b border-charcoal/60 bg-obsidian"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: "url('/images/bg_repeticiones.png')" }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/65 to-obsidian/90"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
             <Badge variant="mono" className="border-steel text-silver-gray px-3 py-1">
