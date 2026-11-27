@@ -6,8 +6,18 @@ import { TrackedLink } from "@/components/tracked-link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-charcoal/80 bg-carbon text-silver-gray font-sans">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+    <footer className="relative overflow-hidden border-t border-charcoal/80 bg-carbon text-silver-gray font-sans">
+      {/* Background image + dark overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_footer.png')] bg-cover bg-center bg-no-repeat"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-obsidian/80"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         
         {/* Community Callout */}
         <div className="mb-12 border border-charcoal bg-obsidian p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
