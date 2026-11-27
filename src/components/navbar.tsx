@@ -42,34 +42,22 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
+            href="/"
+            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
+          >
+            Inicio
+          </Link>
+          <Link
+            href="/games"
+            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
+          >
+            Catálogo
+          </Link>
+          <Link
             href="/rooms"
             className="text-sm font-medium text-arcade-magenta hover:text-pure-white transition-colors"
           >
             Salas en Vivo
-          </Link>
-          <Link
-            href="/#stats"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            Estadísticas
-          </Link>
-          <Link
-            href="/#top-downloads"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            Rankings
-          </Link>
-          <Link
-            href="/#features"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            Características
-          </Link>
-          <Link
-            href="/#philosophy"
-            className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
-          >
-            Filosofía
           </Link>
         </nav>
 
@@ -104,25 +92,25 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-charcoal bg-carbon px-4 pt-3 pb-6 space-y-3">
           <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
+          >
+            Inicio
+          </Link>
+          <Link
+            href="/games"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
+          >
+            Catálogo
+          </Link>
+          <Link
             href="/rooms"
             onClick={() => setMobileMenuOpen(false)}
             className="block rounded-none px-3 py-2 text-sm font-medium text-arcade-magenta hover:bg-graphite hover:text-pure-white"
           >
             Salas en Vivo
-          </Link>
-          <Link
-            href="/#features"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
-          >
-            Características
-          </Link>
-          <Link
-            href="/#philosophy"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-none px-3 py-2 text-sm font-medium text-silver-gray hover:bg-graphite hover:text-pure-white"
-          >
-            Filosofía
           </Link>
         </div>
       )}
