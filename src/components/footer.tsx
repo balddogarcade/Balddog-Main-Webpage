@@ -1,8 +1,8 @@
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Globe, ArrowUpRight } from "lucide-react";
 import { GithubIcon, DiscordIcon, XIcon } from "@/components/icons";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function Footer() {
   return (
@@ -13,7 +13,7 @@ export function Footer() {
           
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-3">
+            <TrackedLink href="/" source="footer_brand" label="bald.dog ARCADE" className="flex items-center gap-3">
               <div className="relative h-9 w-9 rounded-none overflow-hidden border border-charcoal bg-obsidian">
                 <Image
                   src="/images/mascot-portrait.jpg"
@@ -31,7 +31,7 @@ export function Footer() {
                   ARCADE
                 </span>
               </div>
-            </Link>
+            </TrackedLink>
 
             <p className="text-xs sm:text-sm text-muted-gray leading-relaxed max-w-sm">
               &ldquo;El patio de recreo de los perros calvos.&rdquo; — Preservación de salones recreativos, competición 1CC auditada por RAM y netplay libre en Android.
@@ -52,32 +52,32 @@ export function Footer() {
               <li>
                 <Link href="/" className="hover:text-pure-white transition-colors">
                   Inicio
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/#stats" className="hover:text-pure-white transition-colors">
                   Estadísticas
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/#top-downloads" className="hover:text-pure-white transition-colors">
                   Rankings
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/#features" className="hover:text-pure-white transition-colors">
                   Características
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/#download" className="hover:text-pure-white transition-colors">
                   Centro de Descarga
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/#philosophy" className="hover:text-pure-white transition-colors">
                   Filosofía Editorial
-                </Link>
+                </TrackedLink>
               </li>
             </ul>
           </div>
@@ -91,12 +91,12 @@ export function Footer() {
               <li>
                 <Link href="/privacy" className="hover:text-pure-white transition-colors">
                   Política de Privacidad
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <Link href="/terms" className="hover:text-pure-white transition-colors">
                   Términos de Servicio
-                </Link>
+                </TrackedLink>
               </li>
               <li>
                 <span className="text-muted-gray">Licencia GPL-3.0</span>
