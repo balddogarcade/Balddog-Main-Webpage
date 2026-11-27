@@ -83,9 +83,19 @@ export function ArcadePulse({ stats }: ArcadePulseProps) {
   return (
     <section
       id="stats"
-      className="py-16 lg:py-24 border-b border-charcoal/60 bg-carbon/30 relative"
+      className="py-16 lg:py-24 border-b border-charcoal/60 bg-carbon/30 relative overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Background image + dark overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_numeros.png')] bg-cover bg-center bg-no-repeat"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-obsidian/75"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center space-y-4 max-w-3xl mx-auto mb-12">
           <Badge variant="mono" className="border-steel text-silver-gray px-3 py-1">
             <Activity className="h-3 w-3 mr-1.5 text-arcade-magenta animate-pulse" />
