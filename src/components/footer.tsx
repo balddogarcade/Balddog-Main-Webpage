@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import { Globe, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GithubIcon, DiscordIcon, XIcon } from "@/components/icons";
 import { TrackedLink } from "@/components/tracked-link";
 
@@ -9,6 +9,55 @@ export function Footer() {
     <footer className="border-t border-charcoal/80 bg-carbon text-silver-gray font-sans">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         
+        {/* Community Callout */}
+        <div className="mb-12 border border-charcoal bg-obsidian p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="space-y-1.5 max-w-xl">
+            <div className="inline-flex items-center gap-2 text-[11px] font-display font-bold uppercase tracking-widest text-arcade-magenta">
+              <span className="h-1.5 w-1.5 bg-arcade-magenta" />
+              <span>Comunidad Arcade</span>
+            </div>
+            <h3 className="font-display text-lg sm:text-xl font-bold text-pure-white tracking-tight">
+              Únete al patio de recreo de los perros calvos
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-gray leading-relaxed">
+              Coordina partidas netplay en vivo, comparte tus récords 1CC, reporta bugs y participa en la preservación del arcade clásico.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <TrackedLink
+              href="https://discord.gg/wrN9KRvubj"
+              external
+              source="footer_community"
+              label="Discord"
+              className="inline-flex items-center gap-2 bg-arcade-magenta hover:bg-arcade-magenta/90 text-pure-white px-4 py-2.5 text-xs font-display font-bold uppercase tracking-wider transition-colors rounded-none"
+            >
+              <DiscordIcon className="h-4 w-4" />
+              <span>Entrar a Discord</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </TrackedLink>
+            <TrackedLink
+              href="https://github.com/balddogarcade/"
+              external
+              source="footer_community"
+              label="GitHub"
+              className="inline-flex items-center gap-2 bg-carbon border border-charcoal hover:border-steel text-silver-gray hover:text-pure-white px-4 py-2.5 text-xs font-display font-bold uppercase tracking-wider transition-colors rounded-none"
+            >
+              <GithubIcon className="h-4 w-4" />
+              <span>GitHub</span>
+            </TrackedLink>
+            <TrackedLink
+              href="https://x.com/BaldDogArcade"
+              external
+              source="footer_community"
+              label="X"
+              className="inline-flex items-center gap-2 bg-carbon border border-charcoal hover:border-steel text-silver-gray hover:text-pure-white px-4 py-2.5 text-xs font-display font-bold uppercase tracking-wider transition-colors rounded-none"
+            >
+              <XIcon className="h-4 w-4" />
+              <span>X / Twitter</span>
+            </TrackedLink>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
           
           {/* Brand Info (2 cols) */}
@@ -157,30 +206,27 @@ export function Footer() {
                   <ArrowUpRight className="h-3 w-3 text-muted-gray" />
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://gateway.pinata.cloud"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-pure-white transition-colors inline-flex items-center gap-1.5"
-                >
-                  <Globe className="h-3.5 w-3.5" />
-                  <span>IPFS Pinata Gateway</span>
-                  <ArrowUpRight className="h-3 w-3 text-muted-gray" />
-                </a>
-              </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Disclaimer & Copyright */}
+        {/* Bottom Bar: Preservation Declaration & Author */}
         <div className="mt-12 pt-8 border-t border-charcoal/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-gray">
           <p className="text-center sm:text-left">
-            bald.dog ARCADE es un proyecto de emulación de código abierto para propósitos de estudio y preservación histórica sin fines comerciales. Todas las marcas registradas pertenecen a sus respectivos titulares.
+            bald.dog ARCADE es un proyecto gratuito, sin fines de lucro y de código abierto dedicado a la preservación histórica del arcade.
           </p>
-          <p className="shrink-0 font-mono">
-            © 2026 bald.dog ARCADE.
+          <p className="shrink-0 font-mono text-center sm:text-right">
+            © 2026 bald.dog ARCADE · Por{" "}
+            <TrackedLink
+              href="https://cbaeza.com"
+              external
+              source="footer_author"
+              label="Carlos Baeza Negroni"
+              className="text-silver-gray hover:text-pure-white underline underline-offset-4 transition-colors"
+            >
+              Carlos Baeza Negroni
+            </TrackedLink>
           </p>
         </div>
 
