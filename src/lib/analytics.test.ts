@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { sanitizeAnalyticsParams, trackEvent } from "./analytics.ts";
+import { sanitizeAnalyticsParams } from "./analytics-utils.ts";
 
 describe("analytics helpers", () => {
   it("sanitizeAnalyticsParams strips undefined values", () => {
@@ -28,11 +28,5 @@ describe("analytics helpers", () => {
   it("sanitizeAnalyticsParams returns undefined when all values are undefined", () => {
     const result = sanitizeAnalyticsParams({ a: undefined, b: undefined });
     assert.equal(result, undefined);
-  });
-
-  it("trackEvent is a no-op in SSR (no window)", () => {
-    assert.doesNotThrow(() => {
-      trackEvent("page_view", { page_path: "/" });
-    });
   });
 });

@@ -5,8 +5,9 @@ import {
   type Analytics,
 } from "firebase/analytics";
 import { getFirebaseApp } from "./firebase";
+import { sanitizeAnalyticsParams, type AnalyticsParams } from "./analytics-utils";
 
-export type AnalyticsParams = Record<string, string | number | boolean | undefined>;
+export { sanitizeAnalyticsParams, type AnalyticsParams };
 
 let analyticsInstance: Analytics | null = null;
 let analyticsInitPromise: Promise<Analytics | null> | null = null;
@@ -41,23 +42,6 @@ export async function getFirebaseAnalytics(): Promise<Analytics | null> {
   }
 
   return analyticsInitPromise;
-}
-
-/**
- * Removes undefined values and truncates string parameters to GA4's 100-char limit.
- */
-export function sanitizeAnalyticsParams(
-  params?: AnalyticsParams
-): Record<string, string | number | boolean> | undefined {
-  if (!params) return undefined;
-
-  const cleaned: Record<string, string | number | boolean> = {};
-  for (const [key, value] of Object.entries(params)) {
-    if (value === undefined) continue;
-    cleaned[key] = typeof value === "string" ? value.slice(0, 100) : value;
-  }
-
-  return Object.keys(cleaned).length > 0 ? cleaned : undefined;
 }
 
 /**
