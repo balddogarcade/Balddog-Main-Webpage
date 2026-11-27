@@ -18,6 +18,7 @@ export function Navbar() {
     pathname === "/rooms" ||
     pathname.startsWith("/rooms/") ||
     pathname.startsWith("/room/");
+  const isWikiActive = pathname === "/wiki" || pathname.startsWith("/wiki/");
 
   const getDesktopLinkClass = (active: boolean) =>
     `text-sm font-medium transition-colors ${
@@ -87,6 +88,13 @@ export function Navbar() {
             className={getDesktopLinkClass(isRoomsActive)}
           >
             Salas en Vivo
+          </Link>
+          <Link
+            href="/wiki"
+            onClick={() => trackNavigation("/wiki", "navbar_desktop", "Wiki")}
+            className={getDesktopLinkClass(isWikiActive)}
+          >
+            Wiki
           </Link>
         </nav>
 
@@ -159,6 +167,16 @@ export function Navbar() {
             className={getMobileLinkClass(isRoomsActive)}
           >
             Salas en Vivo
+          </Link>
+          <Link
+            href="/wiki"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              trackNavigation("/wiki", "navbar_mobile", "Wiki");
+            }}
+            className={getMobileLinkClass(isWikiActive)}
+          >
+            Wiki
           </Link>
         </div>
       )}
