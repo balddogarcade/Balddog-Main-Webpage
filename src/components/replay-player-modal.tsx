@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { trackEvent } from "@/lib/analytics";
 import {
   X,
   Play,
@@ -611,7 +612,11 @@ export function ReplayPlayer({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => setIsPlaying((p) => !p)}
+                  onClick={() => {
+                    const next = !isPlaying;
+                    setIsPlaying(next);
+                    trackEvent("replay_control", { action: next ? "play" : "pause" });
+                  }}
                   className="inline-flex items-center gap-1.5 rounded-none bg-arcade-magenta px-3 py-1.5 text-xs font-mono font-bold text-pure-white hover:opacity-90"
                 >
                   {isPlaying ? (
@@ -627,7 +632,10 @@ export function ReplayPlayer({
 
                 <button
                   type="button"
-                  onClick={handleRestart}
+                  onClick={() => {
+                    handleRestart();
+                    trackEvent("replay_control", { action: "restart" });
+                  }}
                   className="inline-flex items-center gap-1.5 rounded-none border border-charcoal bg-obsidian px-2.5 py-1.5 text-xs font-mono text-pure-white hover:border-steel"
                 >
                   <RotateCcw className="h-3.5 w-3.5" /> Reiniciar
@@ -638,7 +646,10 @@ export function ReplayPlayer({
                     <button
                       key={s}
                       type="button"
-                      onClick={() => setSpeed(s)}
+                      onClick={() => {
+                        setSpeed(s);
+                        trackEvent("replay_control", { action: "speed", speed: s });
+                      }}
                       className={`rounded-none px-2 py-1 text-xs font-mono font-bold transition-colors ${
                         speed === s
                           ? "bg-arcade-amber text-pure-black"
@@ -654,7 +665,11 @@ export function ReplayPlayer({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => setIsMuted((m) => !m)}
+                  onClick={() => {
+                    const next = !isMuted;
+                    setIsMuted(next);
+                    trackEvent("replay_control", { action: next ? "mute" : "unmute" });
+                  }}
                   className="rounded-none border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
                   aria-label={isMuted ? "Activar audio" : "Silenciar"}
                 >
@@ -666,7 +681,10 @@ export function ReplayPlayer({
                 </button>
                 <button
                   type="button"
-                  onClick={handleFullscreen}
+                  onClick={() => {
+                    handleFullscreen();
+                    trackEvent("replay_control", { action: "fullscreen" });
+                  }}
                   className="rounded-none border border-charcoal bg-obsidian p-1.5 text-muted-gray hover:text-pure-white"
                   aria-label="Pantalla completa"
                 >

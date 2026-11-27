@@ -1,6 +1,6 @@
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 import { Download, Clock, Users, Flame, Trophy } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -69,12 +69,14 @@ function GamePosterCard({
       {/* Metadata Footer */}
       <div className="p-3.5 flex flex-col justify-between flex-1 space-y-2.5">
         <div>
-          <Link
+          <TrackedLink
             href={`/games/${encodeURIComponent(game.slug)}`}
+            source="home_game_rankings"
+            label={game.title}
             className="font-display text-sm font-bold text-pure-white hover:text-arcade-magenta transition-colors line-clamp-1 block"
           >
             {game.title}
-          </Link>
+          </TrackedLink>
           <div className="flex items-center gap-2 mt-1 text-[11px] font-mono text-muted-gray">
             <span className="inline-flex items-center gap-1">
               <Users className="h-3 w-3" />

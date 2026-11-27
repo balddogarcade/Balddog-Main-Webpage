@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Play, ShieldCheck, Clock, Film, Share2, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { DiceBearAvatar } from "@/components/dicebear-avatar";
+import { trackModal, trackNavigation, trackShare } from "@/lib/analytics";
 import type { LatestReplayItem } from "@/lib/arcade-stats";
 import { ReplayPlayerModal } from "@/components/replay-player-modal";
 
@@ -108,6 +109,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                   <div className="space-y-1">
                     <Link
                       href={`/games/${encodeURIComponent(item.game_slug)}`}
+                      onClick={() => trackNavigation(`/games/${item.game_slug}`, "home_latest_replays", item.game_title)}
                       className="font-display text-sm font-bold text-pure-white hover:text-arcade-magenta transition-colors line-clamp-1 block"
                     >
                       {item.game_title}
@@ -115,6 +117,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                     <div className="flex items-center justify-between text-[11px] font-mono text-muted-gray">
                       <Link
                         href={`/u/${encodeURIComponent(item.username)}`}
+                        onClick={() => trackNavigation(`/u/${item.username}`, "home_latest_replays_player", item.username)}
                         className="inline-flex items-center gap-1.5 group/user hover:text-pure-white transition-colors min-w-0"
                       >
                         <DiceBearAvatar
@@ -147,7 +150,10 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                     <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         type="button"
-                        onClick={() => handleShare(item)}
+                        onClick={() => {
+                          handleShare(item);
+                          trackShare("replay", item.id, "clipboard");
+                        }}
                         title="Compartir repetición"
                         aria-label="Compartir repetición"
                         className="inline-flex items-center justify-center rounded-none border border-steel bg-obsidian px-2 py-1.5 text-[11px] font-mono text-silver-gray hover:text-pure-white hover:border-pure-white transition-colors cursor-pointer"
@@ -160,7 +166,10 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                       </button>
                       <button
                         type="button"
-                        onClick={() => setActiveReplay(item)}
+                        onClick={() => {
+                          setActiveReplay(item);
+                          trackModal("replay_player", "open", item.game_slug);
+                        }}
                         className="inline-flex items-center gap-1 rounded-none bg-arcade-magenta px-2.5 py-1.5 text-[11px] font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer"
                       >
                         <Play className="h-3 w-3 fill-current" />
