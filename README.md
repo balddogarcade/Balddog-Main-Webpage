@@ -79,3 +79,7 @@ GPL-3.0 License. Open source arcade preservation.
 
 - **`/rooms` & `/api/rooms`:** Live public board of open `waiting` netplay rooms with game filtering, real-time `searching` / `playing` metrics, DiceBear avatars, and scannable QR codes pointing to `https://bald.dog/room/<room_id>`.
 - **`/room/[id]` & `/.well-known/assetlinks.json`:** Android App Link verification and web fallback landing page for users without the app installed.
+
+
+## Replays
+El visor web de replays soporta `.bsv.zst` (Zstandard vía `fzstd`) y `.bsv.gz` (Gzip legacy) de forma transparente.

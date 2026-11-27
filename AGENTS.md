@@ -62,3 +62,7 @@ Toda página interna de navegación (ej. `/games`, `/rooms`, etc.) **DEBE** segu
 
 - Todo nuevo botón, enlace de navegación, filtro, modal o acción interactiva **DEBE** instrumentarse usando `@/lib/analytics` (`trackEvent`, `trackNavigation`, `trackDownload`, `trackModal`, `trackFilter`, `trackShare`), `@/hooks/use-analytics`, o `@/components/tracked-link`.
 - Nunca importar `firebase/analytics` directamente en componentes UI; usar siempre los helpers SSR-safe de `src/lib/analytics.ts`.
+
+
+## Replays (`.bsv.zst` + `.bsv.gz`)
+- `src/lib/bsv-parser.ts` utiliza `fzstd` para descomprimir `.bsv.zst` y `DecompressionStream("gzip")` para `.bsv.gz` mediante detección por *magic bytes*. Mantener ambos caminos al modificar el reproductor de replays.
