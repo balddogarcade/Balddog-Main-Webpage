@@ -20,12 +20,12 @@ export function DownloadSection() {
     <section id="download" className="relative overflow-hidden py-20 lg:py-28 border-b border-charcoal/60 bg-gradient-to-b from-carbon/40 via-obsidian to-obsidian">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
         style={{ backgroundImage: "url('/images/bg_descargas.png')" }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/65 to-obsidian/90"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/65 via-obsidian/45 to-obsidian/75"
       />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         

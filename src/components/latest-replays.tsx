@@ -46,12 +46,12 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
         style={{ backgroundImage: "url('/images/bg_repeticiones.png')" }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/80 via-obsidian/65 to-obsidian/90"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/65 via-obsidian/45 to-obsidian/75"
       />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
