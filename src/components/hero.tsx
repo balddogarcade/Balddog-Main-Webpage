@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Gamepad2 } from "lucide-react";
 import { AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/tracked-link";
 import { Badge } from "@/components/ui/badge";
 import {
   type ArcadeSummaryStats,
@@ -47,18 +48,18 @@ export function Hero({ stats }: HeroProps) {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
-              <a href="#download">
+              <TrackedLink href="#download" source="hero_cta" label="Descargar APK Android">
                 <Button variant="default" size="lg" className="gap-3 w-full sm:w-auto h-13 px-8 text-base">
                   <AndroidIcon className="h-5 w-5" />
                   <span>Descargar APK Android</span>
                 </Button>
-              </a>
-              <Link href="/games">
+              </TrackedLink>
+              <TrackedLink href="/games" source="hero_cta" label="Catálogo">
                 <Button variant="secondary" size="lg" className="gap-2.5 w-full sm:w-auto h-13 px-6 text-base">
                   <Gamepad2 className="h-5 w-5" />
                   <span>Catálogo</span>
                 </Button>
-              </Link>
+              </TrackedLink>
             </div>
 
             {/* Live Arcade Telemetry Strip */}

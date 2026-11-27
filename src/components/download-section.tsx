@@ -6,6 +6,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { trackDownload, trackNavigation } from "@/lib/analytics";
 
 export function DownloadSection() {
   const directApkUrl =
@@ -76,6 +77,7 @@ export function DownloadSection() {
                       href={directApkUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackDownload("app-release.apk", "download_section", directApkUrl)}
                       className="w-full sm:w-auto"
                     >
                       <Button variant="default" size="lg" className="gap-2 w-full sm:w-auto h-11 px-4 text-xs sm:text-sm whitespace-nowrap">
@@ -87,6 +89,7 @@ export function DownloadSection() {
                       href={releasePageUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => trackNavigation(releasePageUrl, "download_section", "Ver Release en GitHub", true)}
                       className="w-full sm:w-auto"
                     >
                       <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto h-11 px-4 text-xs sm:text-sm whitespace-nowrap border-charcoal hover:border-silver-gray">
