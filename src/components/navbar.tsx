@@ -42,6 +42,12 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
+            href="/rooms"
+            className="text-sm font-medium text-arcade-magenta hover:text-pure-white transition-colors"
+          >
+            Salas en Vivo
+          </Link>
+          <Link
             href="/#stats"
             className="text-sm font-medium text-silver-gray hover:text-pure-white transition-colors"
           >
@@ -97,6 +103,13 @@ export function Navbar() {
       {/* Mobile Drawer Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-charcoal bg-carbon px-4 pt-3 pb-6 space-y-3">
+          <Link
+            href="/rooms"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block rounded-none px-3 py-2 text-sm font-medium text-arcade-magenta hover:bg-graphite hover:text-pure-white"
+          >
+            Salas en Vivo
+          </Link>
           <Link
             href="/#features"
             onClick={() => setMobileMenuOpen(false)}
