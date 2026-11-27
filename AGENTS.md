@@ -51,3 +51,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Cloudflare Web Analytics:** Activo con `auto_install: True` para `bald.dog`. No insertar el snippet de beacon manualmente en `src/app/layout.tsx`.
 - **Supabase `pg_cron`:** El job `cleanup-stale-rooms` cierra salas inactivas cada 5 minutos, asegurando que las estadísticas públicas en `get_public_arcade_stats()` reflejen salas activas reales.
 - **Referencia:** [docs/ANALYTICS_AND_MAINTENANCE.md](docs/ANALYTICS_AND_MAINTENANCE.md).
+
+---
+
+## Salas Abiertas en Vivo, QR y Android App Links
+
+- **RPCs públicos:** `/rooms`, `/room/[id]` y `/api/rooms` consumen `get_public_open_rooms()` y `get_matchmaking_stats()` server-side (`src/lib/open-rooms.ts`) sin exponer IPs, endpoints ni correos.
+- **Android App Links:** `public/.well-known/assetlinks.json` y `public/_headers` (`Content-Type: application/json`) habilitan la apertura directa de `https://bald.dog/room/<uuid>` en la app Android.

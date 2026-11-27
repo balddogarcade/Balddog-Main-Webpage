@@ -11,3 +11,7 @@ La web pública utiliza **Cloudflare Web Analytics** para medir tráfico y rendi
 ## Mantenimiento Automático en Supabase (`pg_cron`)
 
 El proyecto Supabase compartido ejecuta la extensión `pg_cron` (`cleanup-stale-rooms`, cada 5 minutos) para cerrar salas de netplay huérfanas o inactivas por más de 30 minutos (`public.cleanup_stale_rooms()`), manteniendo consistentes los contadores públicos consumidos por `get_public_arcade_stats()`.
+
+## Salas Abiertas y Métricas de Emparejamiento
+
+- `src/lib/open-rooms.ts` consulta `get_public_open_rooms()` y `get_matchmaking_stats()` con `cache: "no-store"` para alimentar `/rooms`, `/room/[id]` y `/api/rooms` cada 12 segundos sin exponer `endpoint` ni PII.

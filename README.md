@@ -71,3 +71,10 @@ GPL-3.0 License. Open source arcade preservation.
 - **Cloudflare Web Analytics:** Cookie-free web analytics enabled automatically on `bald.dog` via Cloudflare (`auto_install: True`).
 - **Supabase `pg_cron`:** Automated 5-minute maintenance job (`cleanup-stale-rooms`) closes orphaned netplay rooms inactive for over 30 minutes.
 - **Docs:** See [docs/ANALYTICS_AND_MAINTENANCE.md](docs/ANALYTICS_AND_MAINTENANCE.md).
+
+---
+
+## Live Open Rooms & QR Magic Links
+
+- **`/rooms` & `/api/rooms`:** Live public board of open `waiting` netplay rooms with game filtering, real-time `searching` / `playing` metrics, DiceBear avatars, and scannable QR codes pointing to `https://bald.dog/room/<room_id>`.
+- **`/room/[id]` & `/.well-known/assetlinks.json`:** Android App Link verification and web fallback landing page for users without the app installed.
