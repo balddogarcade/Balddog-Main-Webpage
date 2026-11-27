@@ -8,6 +8,8 @@ import {
   Lock,
   Trophy,
   Play,
+  Share2,
+  Check,
   ShieldCheck,
   Clock,
   ExternalLink,
@@ -28,6 +30,27 @@ import {
 export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
   const [activeReplay, setActiveReplay] =
     React.useState<LatestReplayItem | null>(null);
+  const [copiedReplayId, setCopiedReplayId] = React.useState<string | null>(null);
+
+  const handleShareReplay = async (item: LatestReplayItem) => {
+    const url = `${window.location.origin}/replays/${encodeURIComponent(item.id)}`;
+    const text = `Mira esta repetición de ${item.username} en ${item.game_title} (${item.score.toLocaleString("es-ES")} pts) en bald.dog ARCADE`;
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: `${item.game_title} — bald.dog ARCADE`, text, url });
+        return;
+      } catch {
+        // Fallback to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedReplayId(item.id);
+      setTimeout(() => setCopiedReplayId((prev) => (prev === item.id ? null : prev)), 2000);
+    } catch {
+      // Ignore clipboard errors
+    }
+  };
 
   const rank = getArcadeRank(profile.global_points);
   const flag = countryCodeToFlagEmoji(profile.country_code);
@@ -284,14 +307,29 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
                       </div>
 
                       {replayItem && (
-                        <button
-                          type="button"
-                          onClick={() => setActiveReplay(replayItem)}
-                          className="inline-flex items-center gap-1.5 bg-pure-white text-pure-black px-2.5 py-1.5 font-mono text-[11px] font-bold uppercase hover:bg-silver-gray transition-colors cursor-pointer rounded-none"
-                        >
-                          <Play className="h-3 w-3 fill-current" />
-                          <span className="hidden sm:inline">Replay</span>
-                        </button>
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => handleShareReplay(replayItem)}
+                            title="Compartir repetición"
+                            aria-label="Compartir repetición"
+                            className="inline-flex items-center justify-center border border-steel bg-obsidian text-silver-gray hover:text-pure-white hover:border-pure-white px-2 py-1.5 font-mono text-[11px] transition-colors cursor-pointer rounded-none"
+                          >
+                            {copiedReplayId === replayItem.id ? (
+                              <Check className="h-3 w-3 text-arcade-emerald" />
+                            ) : (
+                              <Share2 className="h-3 w-3" />
+                            )}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setActiveReplay(replayItem)}
+                            className="inline-flex items-center gap-1.5 bg-pure-white text-pure-black px-2.5 py-1.5 font-mono text-[11px] font-bold uppercase hover:bg-silver-gray transition-colors cursor-pointer rounded-none"
+                          >
+                            <Play className="h-3 w-3 fill-current" />
+                            <span className="hidden sm:inline">Replay</span>
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>

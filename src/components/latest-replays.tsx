@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, ShieldCheck, Clock, Film } from "lucide-react";
+import { Play, ShieldCheck, Clock, Film, Share2, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { DiceBearAvatar } from "@/components/dicebear-avatar";
 import type { LatestReplayItem } from "@/lib/arcade-stats";
@@ -12,6 +12,27 @@ import { ReplayPlayerModal } from "@/components/replay-player-modal";
 export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
   const [activeReplay, setActiveReplay] =
     React.useState<LatestReplayItem | null>(null);
+  const [copiedId, setCopiedId] = React.useState<string | null>(null);
+
+  const handleShare = async (item: LatestReplayItem) => {
+    const url = `${window.location.origin}/replays/${encodeURIComponent(item.id)}`;
+    const text = `Mira esta repetición de ${item.username} en ${item.game_title} (${item.score.toLocaleString("es-ES")} pts) en bald.dog ARCADE`;
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: `${item.game_title} — bald.dog ARCADE`, text, url });
+        return;
+      } catch {
+        // Fallback to clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopiedId(item.id);
+      setTimeout(() => setCopiedId((prev) => (prev === item.id ? null : prev)), 2000);
+    } catch {
+      // Ignore clipboard errors
+    }
+  };
 
   if (!replays || replays.length === 0) {
     return null;
@@ -123,14 +144,29 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
                       </span>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => setActiveReplay(item)}
-                      className="inline-flex items-center gap-1 rounded-none bg-arcade-magenta px-2.5 py-1.5 text-[11px] font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer shrink-0"
-                    >
-                      <Play className="h-3 w-3 fill-current" />
-                      Ver
-                    </button>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => handleShare(item)}
+                        title="Compartir repetición"
+                        aria-label="Compartir repetición"
+                        className="inline-flex items-center justify-center rounded-none border border-steel bg-obsidian px-2 py-1.5 text-[11px] font-mono text-silver-gray hover:text-pure-white hover:border-pure-white transition-colors cursor-pointer"
+                      >
+                        {copiedId === item.id ? (
+                          <Check className="h-3 w-3 text-arcade-emerald" />
+                        ) : (
+                          <Share2 className="h-3 w-3" />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveReplay(item)}
+                        className="inline-flex items-center gap-1 rounded-none bg-arcade-magenta px-2.5 py-1.5 text-[11px] font-mono font-bold text-pure-white hover:opacity-90 transition-opacity cursor-pointer"
+                      >
+                        <Play className="h-3 w-3 fill-current" />
+                        Ver
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
