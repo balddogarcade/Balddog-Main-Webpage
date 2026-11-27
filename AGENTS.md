@@ -1,60 +1,59 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Reglas de Diseño y Consistencia (`AGENTS.md`)
 
-## This is NOT the Next.js you know
+Este archivo define reglas obligatorias que todo agente de IA debe respetar al crear o modificar páginas en `Balddog-Main-Webpage` para mantener una consistencia visual absoluta en todo el sitio.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## 1. Estructura Obligatoria de Páginas Internas
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+Toda página interna de navegación (ej. `/games`, `/rooms`, etc.) **DEBE** seguir exactamente esta estructura de layout, encabezados, márgenes, tipografía y breadcrumbs:
 
-<!-- END:nextjs-agent-rules -->
+1. **Contenedor raíz:**
+   ```tsx
+   <div className="min-h-screen flex flex-col bg-obsidian text-pure-white">
+     <Navbar />
+     {/* Barra de sub-encabezado */}
+     {/* <main> */}
+     <Footer />
+   </div>
+   ```
 
-## Reglas de Comunicación
+2. **Barra de sub-encabezado (obligatoria inmediatamente debajo de `<Navbar />`):**
+   - Contenedor externo: `border-b border-charcoal bg-pure-black`
+   - Contenedor interno: `mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 flex-wrap`
+   - **Lado izquierdo** (`flex items-center gap-3`):
+     - Botón **Volver**:
+       ```tsx
+       <Link
+         href="/"
+         className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
+       >
+         <ArrowLeft className="h-3.5 w-3.5" />
+         Volver
+       </Link>
+       ```
+     - Título de la sección:
+       ```tsx
+       <span className="font-display text-sm font-bold uppercase tracking-wider text-pure-white">
+         Título de la Sección
+       </span>
+       ```
+   - **Lado derecho**: Componente `<Breadcrumb />` (`@/components/ui/breadcrumb`) comenzando siempre por `{ label: "Inicio", href: "/" }`:
+     ```tsx
+     <Breadcrumb
+       items={[
+         { label: "Inicio", href: "/" },
+         { label: "Título de la Sección" },
+       ]}
+     />
+     ```
 
-1. **Idioma obligatorio — Comunicación siempre en español:**
-   - **SIEMPRE** comunícate con el usuario en **español** (respuestas, explicaciones, preguntas, reportes de estado y mensajes de error).
-   - *(Los mensajes de commit en Git deben redactarse en inglés).*
+3. **Contenedor `<main>`:**
+   - **SIEMPRE** usar exactamente estas clases para mantener los mismos márgenes, ancho máximo y espaciado vertical:
+     ```tsx
+     <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+     ```
 
----
+## 2. Prohibiciones
 
-## Reglas Críticas de Git y Secretos
-
-1. **Autoría exclusiva (`cjbaezilla`) — Prohibido co-autorear commits:**
-   - **NUNCA** agregues líneas `Co-authored-by:` ni trailers de atribución a IA/herramientas.
-   - El **único autor** de todos los commits debe ser **`cjbaezilla`**.
-2. **Cero secretos en el repositorio:**
-   - **NUNCA** hagas commit de `.dev.vars`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` ni credenciales en archivos o logs.
-3. **Commits descriptivos en inglés:**
-   - Incluye siempre título claro y cuerpo descriptivo en inglés.
-
----
-
-## Invariantes de Cloudflare Workers, OpenNext y Releases
-
-1. **Despliegue exclusivo en Cloudflare Workers:**
-   - El sitio corre sobre **Cloudflare Workers** (`@opennextjs/cloudflare` + `wrangler`).
-   - **NUNCA** agregues `output: "export"` en `next.config.ts` (rompe `.next/standalone` requerido por OpenNext) ni workflows de GitHub Pages.
-2. **Dominios personalizados en `wrangler.jsonc`:**
-   - Mantén siempre `routes` con `custom_domain: true` para `bald.dog` y `www.bald.dog`.
-3. **Distribución oficial del APK y VirusTotal (`src/components/download-section.tsx`):**
-   - El botón principal y el código QR deben apuntar a `https://github.com/balddogarcade/Balddog-Android-App/releases/latest/download/app-release.apk`.
-   - Mantén el botón secundario a `releases/latest`, el enlace a `app-release.apk.sha256` y el banner de **Transparencia y Análisis VirusTotal** (`SLSA + SHA-256`).
-4. **Telemetría Pública y Cuentas Registradas:**
-   - Las estadísticas y rankings (`src/lib/arcade-stats.ts`) se consultan server-side vía `SUPABASE_URL` y `SUPABASE_ANON_KEY` (`.dev.vars` en local, `wrangler secret put` en producción) contra el RPC `get_public_arcade_stats()`.
-   - No existen cuentas anónimas ni de visitantes en la plataforma; evitar textos como "Sin cuentas forzadas" o similares.
-   - Para validar lint en código fuente sin escanear `.open-next/**`, ejecutar `npx eslint src`.
-5. **Referencia técnica:** Consulta [docs/CLOUDFLARE_AND_RELEASES.md](docs/CLOUDFLARE_AND_RELEASES.md) para arquitectura, comandos y troubleshooting.
-
----
-
-## Analítica Web y Mantenimiento (`Cloudflare Web Analytics` + `pg_cron`)
-
-- **Cloudflare Web Analytics:** Activo con `auto_install: True` para `bald.dog`. No insertar el snippet de beacon manualmente en `src/app/layout.tsx`.
-- **Supabase `pg_cron`:** El job `cleanup-stale-rooms` cierra salas inactivas cada 5 minutos, asegurando que las estadísticas públicas en `get_public_arcade_stats()` reflejen salas activas reales.
-- **Referencia:** [docs/ANALYTICS_AND_MAINTENANCE.md](docs/ANALYTICS_AND_MAINTENANCE.md).
-
----
-
-## Salas Abiertas en Vivo, QR y Android App Links
-
-- **RPCs públicos:** `/rooms`, `/room/[id]` y `/api/rooms` consumen `get_public_open_rooms()` y `get_matchmaking_stats()` server-side (`src/lib/open-rooms.ts`) sin exponer IPs, endpoints ni correos.
-- **Android App Links:** `public/.well-known/assetlinks.json` y `public/_headers` (`Content-Type: application/json`) habilitan la apertura directa de `https://bald.dog/room/<uuid>` en la app Android.
+- **PROHIBIDO** crear encabezados alternativos dentro de `<main>` con `py-12`, kickers sueltos o `<h1>` grandes (`text-3xl sm:text-4xl`) en páginas internas de navegación.
+- **PROHIBIDO** omitir el botón `Volver` o el componente `<Breadcrumb />` en páginas internas.
+- **PROHIBIDO** alterar los paddings horizontales (`px-4 sm:px-6 lg:px-8`) o el ancho máximo (`max-w-7xl`) respecto al resto de las páginas internas.
