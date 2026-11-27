@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { trackModal, trackShare } from "@/lib/analytics";
 import {
   ArrowLeft,
   Lock,
@@ -310,7 +311,10 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
                         <div className="flex items-center gap-1.5 shrink-0">
                           <button
                             type="button"
-                            onClick={() => handleShareReplay(replayItem)}
+                            onClick={() => {
+                              handleShareReplay(replayItem);
+                              trackShare("replay", replayItem.id, "clipboard");
+                            }}
                             title="Compartir repetición"
                             aria-label="Compartir repetición"
                             className="inline-flex items-center justify-center border border-steel bg-obsidian text-silver-gray hover:text-pure-white hover:border-pure-white px-2 py-1.5 font-mono text-[11px] transition-colors cursor-pointer rounded-none"
@@ -323,7 +327,10 @@ export function PublicProfileView({ profile }: { profile: PublicWebProfile }) {
                           </button>
                           <button
                             type="button"
-                            onClick={() => setActiveReplay(replayItem)}
+                            onClick={() => {
+                              setActiveReplay(replayItem);
+                              trackModal("replay_player", "open", replayItem.game_slug);
+                            }}
                             className="inline-flex items-center gap-1.5 bg-pure-white text-pure-black px-2.5 py-1.5 font-mono text-[11px] font-bold uppercase hover:bg-silver-gray transition-colors cursor-pointer rounded-none"
                           >
                             <Play className="h-3 w-3 fill-current" />

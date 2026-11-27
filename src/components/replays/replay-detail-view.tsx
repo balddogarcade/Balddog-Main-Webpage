@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { trackNavigation, trackShare } from "@/lib/analytics";
 import {
   ArrowLeft,
   Calendar,
@@ -108,6 +109,7 @@ export function ReplayDetailView({ replay }: { replay: LatestReplayItem }) {
                   <span className="font-mono text-xs text-muted-gray">Jugador</span>
                   <Link
                     href={`/u/${encodeURIComponent(replay.username)}`}
+                    onClick={() => trackNavigation(`/u/${replay.username}`, "replay_detail_player", replay.username)}
                     className="inline-flex items-center gap-2 font-display text-sm font-bold text-pure-white hover:text-arcade-cyan transition-colors"
                   >
                     <DiceBearAvatar
@@ -126,6 +128,7 @@ export function ReplayDetailView({ replay }: { replay: LatestReplayItem }) {
                   </span>
                   <Link
                     href={`/games/${encodeURIComponent(replay.game_slug)}`}
+                    onClick={() => trackNavigation(`/games/${replay.game_slug}`, "replay_detail_game", replay.game_title)}
                     className="font-mono text-xs text-pure-white hover:text-arcade-cyan transition-colors text-right truncate max-w-[200px]"
                   >
                     {replay.game_title}
@@ -156,7 +159,10 @@ export function ReplayDetailView({ replay }: { replay: LatestReplayItem }) {
               <div className="border-t border-charcoal pt-4">
                 <button
                   type="button"
-                  onClick={handleCopyLink}
+                  onClick={() => {
+                    void handleCopyLink();
+                    trackShare("replay", replay.id, "clipboard");
+                  }}
                   className="w-full inline-flex items-center justify-center gap-2 bg-obsidian border border-steel hover:border-pure-white px-4 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-pure-white transition-colors rounded-none"
                 >
                   {copied ? (

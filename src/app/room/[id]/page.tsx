@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 import type { Metadata } from "next";
 import { Download, Smartphone, Users } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
@@ -71,24 +71,24 @@ export default async function RoomMagicLinkPage({
           )}
 
           <div className="flex flex-col sm:flex-row gap-3">
-            <a href={deepLinkScheme} className="flex-1">
+            <TrackedLink href={deepLinkScheme} source="room_deep_link" label="Abrir en bald.dog ARCADE" external className="flex-1">
               <Button className="w-full gap-2">
                 <Smartphone className="h-4 w-4" />
                 <span>Abrir en bald.dog ARCADE</span>
               </Button>
-            </a>
-            <Link href="/#download" className="flex-1">
+            </TrackedLink>
+            <TrackedLink href="/#download" source="room_deep_link_fallback" label="Descargar APK Android" className="flex-1">
               <Button variant="outline" className="w-full gap-2 border-charcoal bg-obsidian text-pure-white hover:bg-graphite">
                 <Download className="h-4 w-4" />
                 <span>Descargar APK Android</span>
               </Button>
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="pt-2 text-center">
-            <Link href="/rooms" className="text-xs font-mono text-silver-gray hover:text-pure-white underline">
+            <TrackedLink href="/rooms" source="room_deep_link" label="Ver todas las salas abiertas" className="text-xs font-mono text-silver-gray hover:text-pure-white underline">
               Ver todas las salas abiertas
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </main>

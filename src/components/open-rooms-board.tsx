@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
 import { RefreshCw, Search, Smartphone, Users } from "lucide-react";
+import { trackEvent, trackNavigation } from "@/lib/analytics";
 import { DiceBearAvatar } from "@/components/dicebear-avatar";
 import { Button } from "@/components/ui/button";
 import type { MatchmakingStats, PublicOpenRoom } from "@/lib/open-rooms";
@@ -94,7 +95,10 @@ export function OpenRoomsBoard({ initialRooms, initialStats }: OpenRoomsBoardPro
         <Button
           variant="outline"
           size="sm"
-          onClick={() => void refresh()}
+          onClick={() => {
+            trackEvent("rooms_refresh", { rooms_count: rooms.length });
+            void refresh();
+          }}
           disabled={refreshing}
           className="gap-2 border-charcoal bg-carbon text-pure-white hover:bg-graphite"
         >
@@ -166,7 +170,10 @@ export function OpenRoomsBoard({ initialRooms, initialStats }: OpenRoomsBoardPro
                   <span className="text-[11px] font-mono text-muted-gray">
                     Escanea el QR con tu teléfono
                   </span>
-                  <Link href={`/room/${room.room_id}`}>
+                  <Link
+                    href={`/room/${room.room_id}`}
+                    onClick={() => trackNavigation(`/room/${room.room_id}`, "open_rooms_board", room.game_title)}
+                  >
                     <Button size="sm" className="gap-1.5">
                       <Smartphone className="h-3.5 w-3.5" />
                       <span>Unirse</span>
