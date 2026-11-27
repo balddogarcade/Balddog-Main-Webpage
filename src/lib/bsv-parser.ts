@@ -1,3 +1,5 @@
+import { decompress as fzstdDecompress } from "fzstd";
+
 export interface ParsedBsvReplay {
   romCrc32: number;
   totalFrames: number;
@@ -10,7 +12,48 @@ const BSV_HEADER_LEN = 16;
 const BYTES_PER_FRAME = 8; // [u16; 4] little-endian
 
 /**
- * Descarga un archivo .bsv.gz, lo descomprime con gzip en el navegador
+ * Descomprime un buffer de replay (.bsv.zst, .bsv.gz o BSV1 crudo) detectando
+ * automáticamente el formato por sus magic bytes.
+ */
+export async function decompressReplayBuffer(
+  compressedBytes: Uint8Array
+): Promise<ArrayBuffer> {
+  if (
+    compressedBytes.length >= 4 &&
+    compressedBytes[0] === 0x28 &&
+    compressedBytes[1] === 0xb5 &&
+    compressedBytes[2] === 0x2f &&
+    compressedBytes[3] === 0xfd
+  ) {
+    const decompressed = fzstdDecompress(compressedBytes);
+    const out = new Uint8Array(decompressed.byteLength);
+    out.set(decompressed);
+    return out.buffer;
+  }
+
+  if (
+    compressedBytes.length >= 2 &&
+    compressedBytes[0] === 0x1f &&
+    compressedBytes[1] === 0x8b
+  ) {
+    if (typeof DecompressionStream !== "undefined") {
+      const stream = new Blob([compressedBytes as unknown as BlobPart])
+        .stream()
+        .pipeThrough(new DecompressionStream("gzip"));
+      return await new Response(stream).arrayBuffer();
+    }
+    throw new Error(
+      "Tu navegador no soporta DecompressionStream('gzip') para reproducir replays legacy."
+    );
+  }
+
+  const out = new Uint8Array(compressedBytes.byteLength);
+  out.set(compressedBytes);
+  return out.buffer;
+}
+
+/**
+ * Descarga un archivo .bsv.zst o .bsv.gz, lo descomprime en el navegador
  * y parsea la cabecera estándar Libretro BSV1 + inputs frame a frame.
  */
 export async function fetchAndParseBsvGz(
@@ -22,17 +65,8 @@ export async function fetchAndParseBsvGz(
     throw new Error(`No se pudo descargar el replay (HTTP ${response.status})`);
   }
 
-  let rawBuffer: ArrayBuffer;
-  if (typeof DecompressionStream !== "undefined" && response.body) {
-    const decompressedStream = response.body.pipeThrough(
-      new DecompressionStream("gzip")
-    );
-    rawBuffer = await new Response(decompressedStream).arrayBuffer();
-  } else {
-    throw new Error(
-      "Tu navegador no soporta DecompressionStream('gzip') para reproducir replays."
-    );
-  }
+  const downloadedBytes = new Uint8Array(await response.arrayBuffer());
+  const rawBuffer = await decompressReplayBuffer(downloadedBytes);
 
   const view = new DataView(rawBuffer);
   if (rawBuffer.byteLength < BSV_HEADER_LEN) {

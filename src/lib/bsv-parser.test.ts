@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { gzipSync } from "node:zlib";
+import { gzipSync, zstdCompressSync } from "node:zlib";
 import { fetchAndParseBsvGz } from "./bsv-parser.ts";
 
 describe("fetchAndParseBsvGz", () => {
@@ -38,6 +38,38 @@ describe("fetchAndParseBsvGz", () => {
       assert.equal(parsed.totalFrames, 2);
       assert.equal(parsed.frames[0], 0x0001);
       assert.equal(parsed.frames[4], 0x0002);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
+  });
+
+  it("parses a valid BSV1 zstd replay buffer", async () => {
+    const buf = new ArrayBuffer(32);
+    const view = new DataView(buf);
+    view.setUint8(0, "B".charCodeAt(0));
+    view.setUint8(1, "S".charCodeAt(0));
+    view.setUint8(2, "V".charCodeAt(0));
+    view.setUint8(3, "1".charCodeAt(0));
+    view.setUint32(4, 0xCAFEBABE, true);
+    view.setUint32(8, 0, true);
+    view.setUint32(12, 0, true);
+    view.setUint16(16, 0x0081, true);
+    view.setUint16(24, 0x0042, true);
+
+    const zst = zstdCompressSync(Buffer.from(buf));
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async () =>
+      new Response(zst, {
+        status: 200,
+        headers: { "Content-Type": "application/zstd" },
+      });
+
+    try {
+      const parsed = await fetchAndParseBsvGz("https://example.com/test.bsv.zst");
+      assert.equal(parsed.romCrc32, 0xCAFEBABE);
+      assert.equal(parsed.totalFrames, 2);
+      assert.equal(parsed.frames[0], 0x0081);
+      assert.equal(parsed.frames[4], 0x0042);
     } finally {
       globalThis.fetch = originalFetch;
     }
