@@ -4,10 +4,23 @@ import * as React from "react";
 import { Search } from "lucide-react";
 import type { PublicGame } from "@/types/game";
 import { GameCard } from "@/components/games/game-card";
+import { trackEvent, trackFilter } from "@/lib/analytics";
 
 export function CatalogGrid({ games }: { games: PublicGame[] }) {
   const [query, setQuery] = React.useState("");
   const [selectedGenre, setSelectedGenre] = React.useState("ALL");
+
+  React.useEffect(() => {
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    const timer = setTimeout(() => {
+      trackEvent("catalog_search", {
+        search_term: trimmed,
+        results_count: games.length,
+      });
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [query, games.length]);
 
   const genres = React.useMemo(() => {
     const set = new Set<string>();
@@ -47,7 +60,10 @@ export function CatalogGrid({ games }: { games: PublicGame[] }) {
         </div>
         <select
           value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
+          onChange={(e) => {
+            setSelectedGenre(e.target.value);
+            trackFilter("genre", e.target.value, "games_catalog");
+          }}
           className="bg-carbon border border-charcoal focus:border-steel outline-none px-4 py-2.5 text-sm font-mono text-silver-gray rounded-none"
         >
           <option value="ALL">Todos los géneros ({games.length})</option>

@@ -6,6 +6,7 @@ import { ArrowLeft, Cpu, Gamepad2, Play, Users, X } from "lucide-react";
 import type { PublicGame } from "@/types/game";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { IpfsImage } from "@/components/games/ipfs-image";
+import { trackModal, trackNavigation } from "@/lib/analytics";
 
 export function GameDetailView({ game }: { game: PublicGame }) {
   const gallery = React.useMemo(
@@ -37,6 +38,7 @@ export function GameDetailView({ game }: { game: PublicGame }) {
           <div className="flex items-center gap-3">
             <Link
               href="/games"
+              onClick={() => trackNavigation("/games", "game_detail_back", "Volver")}
               className="inline-flex items-center gap-1.5 bg-carbon border border-charcoal hover:border-steel px-3 py-1.5 text-xs font-display font-bold uppercase tracking-wider text-silver-gray hover:text-pure-white transition-colors rounded-none"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
@@ -133,7 +135,10 @@ export function GameDetailView({ game }: { game: PublicGame }) {
               <button
                 key={item.key}
                 type="button"
-                onClick={() => setLightbox(item)}
+                onClick={() => {
+                  setLightbox(item);
+                  trackModal("game_gallery_lightbox", "open", `${game.slug}:${item.key}`);
+                }}
                 className="group bg-carbon border border-charcoal hover:border-steel overflow-hidden text-left rounded-none"
               >
                 <div className="aspect-video bg-obsidian overflow-hidden">

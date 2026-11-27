@@ -1,14 +1,16 @@
-import Link from "next/link";
 import { Users } from "lucide-react";
 import type { PublicGame } from "@/types/game";
 import { IpfsImage } from "@/components/games/ipfs-image";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function GameCard({ game }: { game: PublicGame }) {
   const imageSrc = game.cover_url || game.url_image_title || game.url_image_ingame;
 
   return (
-    <Link
+    <TrackedLink
       href={`/games/${encodeURIComponent(game.slug)}`}
+      source="games_catalog_card"
+      label={game.title}
       className="group bg-carbon border border-charcoal hover:border-steel transition-colors rounded-none flex flex-col overflow-hidden"
     >
       <div className="relative aspect-[3/4] w-full bg-obsidian overflow-hidden border-b border-charcoal">
@@ -45,6 +47,6 @@ export function GameCard({ game }: { game: PublicGame }) {
           </span>
         </div>
       </div>
-    </Link>
+    </TrackedLink>
   );
 }
