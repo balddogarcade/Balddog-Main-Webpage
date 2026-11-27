@@ -1,6 +1,5 @@
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Gamepad2 } from "lucide-react";
 import { AndroidIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";

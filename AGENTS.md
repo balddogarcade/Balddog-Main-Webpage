@@ -57,3 +57,8 @@ Toda página interna de navegación (ej. `/games`, `/rooms`, etc.) **DEBE** segu
 - **PROHIBIDO** crear encabezados alternativos dentro de `<main>` con `py-12`, kickers sueltos o `<h1>` grandes (`text-3xl sm:text-4xl`) en páginas internas de navegación.
 - **PROHIBIDO** omitir el botón `Volver` o el componente `<Breadcrumb />` en páginas internas.
 - **PROHIBIDO** alterar los paddings horizontales (`px-4 sm:px-6 lg:px-8`) o el ancho máximo (`max-w-7xl`) respecto al resto de las páginas internas.
+
+## 3. Regla de Instrumentación de Analytics
+
+- Todo nuevo botón, enlace de navegación, filtro, modal o acción interactiva **DEBE** instrumentarse usando `@/lib/analytics` (`trackEvent`, `trackNavigation`, `trackDownload`, `trackModal`, `trackFilter`, `trackShare`), `@/hooks/use-analytics`, o `@/components/tracked-link`.
+- Nunca importar `firebase/analytics` directamente en componentes UI; usar siempre los helpers SSR-safe de `src/lib/analytics.ts`.

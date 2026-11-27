@@ -69,6 +69,7 @@ GPL-3.0 License. Open source arcade preservation.
 ## Analytics & Backend Maintenance
 
 - **Cloudflare Web Analytics:** Cookie-free web analytics enabled automatically on `bald.dog` via Cloudflare (`auto_install: True`).
+- **Firebase Analytics (Web + Android):** Unified GA4 event tracking via `src/lib/analytics.ts` and `AnalyticsProvider` (configured with `NEXT_PUBLIC_FIREBASE_*` from `.env.example`).
 - **Supabase `pg_cron`:** Automated 5-minute maintenance job (`cleanup-stale-rooms`) closes orphaned netplay rooms inactive for over 30 minutes.
 - **Docs:** See [docs/ANALYTICS_AND_MAINTENANCE.md](docs/ANALYTICS_AND_MAINTENANCE.md).
 

@@ -50,32 +50,32 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-pure-white transition-colors">
+                <TrackedLink href="/" source="footer_nav" label="Inicio" className="hover:text-pure-white transition-colors">
                   Inicio
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/#stats" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/#stats" className="hover:text-pure-white transition-colors">
                   Estadísticas
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/#top-downloads" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/#top-downloads" className="hover:text-pure-white transition-colors">
                   Rankings
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/#features" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/#features" className="hover:text-pure-white transition-colors">
                   Características
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/#download" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/#download" className="hover:text-pure-white transition-colors">
                   Centro de Descarga
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/#philosophy" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/#philosophy" className="hover:text-pure-white transition-colors">
                   Filosofía Editorial
                 </TrackedLink>
               </li>
@@ -89,12 +89,12 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/privacy" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/privacy" className="hover:text-pure-white transition-colors">
                   Política de Privacidad
                 </TrackedLink>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-pure-white transition-colors">
+                <TrackedLink source="footer" href="/terms" className="hover:text-pure-white transition-colors">
                   Términos de Servicio
                 </TrackedLink>
               </li>
