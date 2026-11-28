@@ -10,7 +10,7 @@ export function Footer() {
       {/* Background image + dark overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_footer.png')] bg-cover bg-center bg-no-repeat"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_footer.webp')] bg-cover bg-center bg-no-repeat"
       />
       <div
         aria-hidden="true"
@@ -75,7 +75,7 @@ export function Footer() {
             <TrackedLink href="/" source="footer_brand" label="bald.dog ARCADE" className="flex items-center gap-3">
               <div className="relative h-9 w-9 rounded-none overflow-hidden border border-charcoal bg-obsidian">
                 <Image
-                  src="/images/mascot-portrait.jpg"
+                  src="/images/mascot-portrait.webp"
                   alt="CHOPPER - bald.dog ARCADE"
                   fill
                   className="object-cover"

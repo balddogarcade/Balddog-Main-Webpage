@@ -43,7 +43,7 @@ export function Navbar() {
         >
           <div className="relative h-10 w-10 overflow-hidden rounded-none border border-charcoal bg-carbon group-hover:border-steel transition-colors">
             <Image
-              src="/images/mascot-portrait.jpg"
+              src="/images/mascot-portrait.webp"
               alt="CHOPPER - bald.dog ARCADE"
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"

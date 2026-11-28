@@ -139,7 +139,7 @@ export function GameRankings({ topDownloaded, topPlayed }: GameRankingsProps) {
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
-            style={{ backgroundImage: "url('/images/bg_favoritos.png')" }}
+            style={{ backgroundImage: "url('/images/bg_favoritos.webp')" }}
           />
           <div
             aria-hidden="true"
@@ -185,7 +185,7 @@ export function GameRankings({ topDownloaded, topPlayed }: GameRankingsProps) {
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
-            style={{ backgroundImage: "url('/images/bg_dondesequema.png')" }}
+            style={{ backgroundImage: "url('/images/bg_dondesequema.webp')" }}
           />
           <div
             aria-hidden="true"

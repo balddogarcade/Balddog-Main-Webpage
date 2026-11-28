@@ -88,7 +88,7 @@ export function ArcadePulse({ stats }: ArcadePulseProps) {
       {/* Background image + dark overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_numeros.png')] bg-cover bg-center bg-no-repeat"
+        className="pointer-events-none select-none absolute inset-0 z-0 bg-[url('/images/bg_numeros.webp')] bg-cover bg-center bg-no-repeat"
       />
       <div
         aria-hidden="true"

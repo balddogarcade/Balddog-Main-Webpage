@@ -15,7 +15,7 @@ export function Philosophy() {
             <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-none overflow-hidden border-2 border-charcoal bg-carbon p-2 shadow-2xl group hover:border-arcade-magenta/50 transition-colors">
               <div className="relative w-full h-full rounded-none overflow-hidden bg-obsidian">
                 <Image
-                  src="/images/mascot-portrait.jpg"
+                  src="/images/mascot-portrait.webp"
                   alt="CHOPPER, Mascota Doberman Calvo - bald.dog ARCADE"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

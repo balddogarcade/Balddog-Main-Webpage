@@ -47,7 +47,7 @@ export function LatestReplays({ replays }: { replays: LatestReplayItem[] }) {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35"
-        style={{ backgroundImage: "url('/images/bg_repeticiones.png')" }}
+        style={{ backgroundImage: "url('/images/bg_repeticiones.webp')" }}
       />
       <div
         aria-hidden="true"

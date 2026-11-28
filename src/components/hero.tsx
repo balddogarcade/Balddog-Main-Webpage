@@ -107,7 +107,7 @@ export function Hero({ stats }: HeroProps) {
               
               <div className="relative w-full h-full rounded-none overflow-hidden bg-obsidian">
                 <Image
-                  src="/images/mascot-pointing.jpg"
+                  src="/images/mascot-pointing.webp"
                   alt="CHOPPER, Doberman calvo señalando al jugador - bald.dog ARCADE"
                   fill
                   className="object-cover object-center"
